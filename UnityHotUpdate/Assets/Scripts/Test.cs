@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
     public Button btn;
-    public Text lab;
+    public TextMeshProUGUI lab;
     int num = 1;
     void Start()
     {
