@@ -21,11 +21,11 @@ public class Init : MonoBehaviour
 
     void Start()
     {
-        retryBtn.gameObject.SetActive(false);
-        retryBtn.onClick.AddListener(() =>
-        {
-            StartCoroutine(DoUpdateAddressadble());
-        });
+        //retryBtn.gameObject.SetActive(false);
+        //retryBtn.onClick.AddListener(() =>
+        //{
+        //    StartCoroutine(DoUpdateAddressadble());
+        //});
 
         // 默认自动执行一次更新检测
         StartCoroutine(DoUpdateAddressadble());
