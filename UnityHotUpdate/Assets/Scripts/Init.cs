@@ -1,125 +1,124 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.UI;
 
-// 检测更新并下载资源
+
 public class Init : MonoBehaviour
 {
-    /// <summary>
-    /// 显示下载状态和进度
-    /// </summary>
-    public Text updateText;
+    private List<object> _updateKeys = new List<object>();
 
-    /// <summary>
-    /// 重试按钮
-    /// </summary>
-    public Button retryBtn;
-
-    void Start()
+    private void Start()
     {
-        //retryBtn.gameObject.SetActive(false);
-        //retryBtn.onClick.AddListener(() =>
+        UpdateCatalog();
+    }
+
+    public async void UpdateCatalog()
+    {
+        Debug.LogError("初始化Addressable");
+        var init = Addressables.InitializeAsync();//开始连接服务器初始化，检测是否连接服务器成功!
+        await init.Task;
+
+        //开始连接服务器检查更新
+        var handle = Addressables.CheckForCatalogUpdates(false);
+        await handle.Task;
+        Debug.LogError("check catalog status " + handle.Status);
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+        {
+            List<string> catalogs = handle.Result;
+            if (catalogs != null && catalogs.Count > 0)
+            {
+                //foreach (var catalog in catalogs)
+                //{
+                //    Debug.LogError("catalog  " + catalog);
+                //}
+                Debug.LogError("download catalog start ");
+                var updateHandle = Addressables.UpdateCatalogs(catalogs, false);
+                await updateHandle.Task;
+
+                foreach (var item in updateHandle.Result)
+                {
+                    //Debug.LogError("catalog result " + item.LocatorId);
+                    //foreach (var key in item.Keys)
+                    //{
+                    //    Debug.LogError("catalog key " + key);
+                    //}
+                    _updateKeys.AddRange(item.Keys);
+                }
+                Debug.LogError("download catalog finish " + updateHandle.Status);
+
+                DownLoad();
+            }
+            else
+            {
+                Debug.LogError("不需要更新");
+            }
+        }
+        Addressables.Release(handle);
+    }
+
+    public IEnumerator DownAssetImpl()
+    {
+        //foreach(var v in _updateKeys)
         //{
-        //    StartCoroutine(DoUpdateAddressadble());
-        //});
+        //    Debug.LogError("v:" + v.ToString());
+        //}
 
-        // 默认自动执行一次更新检测
-        StartCoroutine(DoUpdateAddressadble());
-    }
 
-    IEnumerator DoUpdateAddressadble()
-    {
-        AsyncOperationHandle<IResourceLocator> initHandle = Addressables.InitializeAsync();
-        yield return initHandle;
+        var downloadsize = Addressables.GetDownloadSizeAsync(_updateKeys);
+        yield return downloadsize;
+        Debug.LogError("start download size :" + downloadsize.Result);
 
-        // 检测更新
-        var checkHandle = Addressables.CheckForCatalogUpdates(true);
-        yield return checkHandle;
-        if (checkHandle.Status != AsyncOperationStatus.Succeeded)
+        if (downloadsize.Result > 0)
         {
-            OnError("CheckForCatalogUpdates Error\n" + checkHandle.OperationException.ToString());
-            yield break;
-        }
-
-        if (checkHandle.Result.Count > 0)
-        {
-            var updateHandle = Addressables.UpdateCatalogs(checkHandle.Result, true);
-            yield return updateHandle;
-
-            if (updateHandle.Status != AsyncOperationStatus.Succeeded)
+            var download = Addressables.DownloadDependenciesAsync(_updateKeys, Addressables.MergeMode.Union);
+            yield return download;
+            //await download.Task;
+            //Debug.LogError("download result type " + download.Result.GetType());
+            foreach (var item in download.Result as List<UnityEngine.ResourceManagement.ResourceProviders.IAssetBundleResource>)
             {
-                OnError("UpdateCatalogs Error\n" + updateHandle.OperationException.ToString());
-                yield break;
-            }
-
-            // 更新列表迭代器
-            List<IResourceLocator> locators = updateHandle.Result;
-            foreach (var locator in locators)
-            {
-                List<object> keys = new List<object>();
-                keys.AddRange(locator.Keys);
-                // 获取待下载的文件总大小
-                var sizeHandle = Addressables.GetDownloadSizeAsync(keys.GetEnumerator());
-                yield return sizeHandle;
-                if (sizeHandle.Status != AsyncOperationStatus.Succeeded)
+                var ab = item.GetAssetBundle();
+                //Debug.LogError("ab name " + ab.name);
+                foreach (var name in ab.GetAllAssetNames())
                 {
-                    OnError("GetDownloadSizeAsync Error\n" + sizeHandle.OperationException.ToString());
-                    yield break;
-                }
-
-                long totalDownloadSize = sizeHandle.Result;
-                updateText.text = updateText.text + "\ndownload size : " + totalDownloadSize;
-                Debug.Log("download size : " + totalDownloadSize);
-                if (totalDownloadSize > 0)
-                {
-                    // 下载
-                    var downloadHandle = Addressables.DownloadDependenciesAsync(keys, true);
-                    while (!downloadHandle.IsDone)
-                    {
-                        if (downloadHandle.Status == AsyncOperationStatus.Failed)
-                        {
-                            OnError("DownloadDependenciesAsync Error\n" + downloadHandle.OperationException.ToString());
-                            yield break;
-                        }
-                        // 下载进度
-                        float percentage = downloadHandle.PercentComplete;
-                        Debug.Log($"已下载: {percentage}");
-                        updateText.text = updateText.text + $"\n已下载: {percentage}";
-                        yield return null;
-                    }
-                    if (downloadHandle.Status == AsyncOperationStatus.Succeeded)
-                    {
-                        Debug.Log("下载完毕!");
-                        updateText.text = updateText.text + "\n下载完毕";
-                    }
+                    Debug.LogError("asset name " + name);
                 }
             }
+            Addressables.Release(download);
         }
-        else
+        Addressables.Release(downloadsize);
+    }
+
+    public void DownLoad()
+    {
+        StartCoroutine(DownAssetImpl());
+    }
+
+    public async void DownloadAsset(object assetName, Action action)
+    {
+        var downloadsize = Addressables.GetDownloadSizeAsync(assetName);
+        await downloadsize.Task;
+        Debug.LogError("start download size :" + downloadsize.Result);
+
+        if (downloadsize.Result > 0)
         {
-            updateText.text = updateText.text + "\n没有检测到更新";
+            var download = Addressables.DownloadDependenciesAsync(assetName);
+            await download.Task;
+            foreach (var item in download.Result as List<UnityEngine.ResourceManagement.ResourceProviders.IAssetBundleResource>)
+            {
+                var ab = item.GetAssetBundle();
+                //Debug.LogError("ab name " + ab.name);
+                foreach (var name in ab.GetAllAssetNames())
+                {
+                    Debug.LogError("asset name " + name);
+                }
+            }
+            Addressables.Release(download);
         }
+        Addressables.Release(downloadsize);
 
-        // 进入游戏
-        EnterGame();
-    }
-
-    // 异常提示
-    private void OnError(string msg)
-    {
-        updateText.text = updateText.text + $"\n{msg}\n请重试! ";
-        // 显示重试按钮
-        retryBtn.gameObject.SetActive(true);
-    }
-
-
-    // 进入游戏
-    void EnterGame()
-    {
-        // TODO
+        action();
     }
 }
