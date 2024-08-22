@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.UI;
 
 
 public class Init : MonoBehaviour
 {
     private List<object> _updateKeys = new List<object>();
+    public Button btn;
 
     private void Start()
     {
