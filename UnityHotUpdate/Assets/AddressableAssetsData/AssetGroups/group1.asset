@@ -15,11 +15,16 @@ MonoBehaviour:
   m_GroupName: group1
   m_Data:
     m_SerializedData: []
-  m_GUID: f218d236febbff84e9fabce2412814f7
-  m_SerializeEntries: []
+  m_GUID: 0d60cfa16d9bb134682dca750769d294
+  m_SerializeEntries:
+  - m_GUID: a6b9956bbbf47f94aae1babc3dc6c1ed
+    m_Address: UIMain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: af8e5ac947286af48b6a62e63e0e111c, type: 2}
+  m_Settings: {fileID: 11400000, guid: 0ddbb2804ad6ea94da953f3dab389938, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 18012784b3189b748a8c3cecceebc00c, type: 2}
-    - {fileID: 11400000, guid: ac029e39a95963945a603ae21ba353db, type: 2}
+    - {fileID: 11400000, guid: f74dc2e0b1284c2459291a9afe803bf0, type: 2}
+    - {fileID: 11400000, guid: c216592b1802c404b871d5779c24175a, type: 2}
