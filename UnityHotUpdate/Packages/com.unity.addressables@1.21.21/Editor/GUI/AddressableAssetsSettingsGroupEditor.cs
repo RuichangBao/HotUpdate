@@ -314,7 +314,7 @@ namespace UnityEditor.AddressableAssets.GUI
                     if (EditorGUI.DropdownButton(rMode, guiMode, FocusType.Passive, EditorStyles.toolbarDropDown))
                     {
                         var menu = new GenericMenu();
-                        menu.AddItem(new GUIContent("Inspect System Settings"), false, () =>
+                        menu.AddItem(new GUIContent("检查系统设置"), false, () =>
                         {
                             EditorApplication.ExecuteMenuItem("Window/General/Inspector");
                             EditorGUIUtility.PingObject(AddressableAssetSettingsDefaultObject.Settings);
