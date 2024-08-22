@@ -4,17 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
 public class Init : MonoBehaviour
 {
     private List<object> _updateKeys = new List<object>();
+    public Text lab;
     public Button btn;
 
     private void Start()
     {
         UpdateCatalog();
+        btn.onClick.AddListener(BtnOnClick);
     }
 
     public async void UpdateCatalog()
@@ -26,36 +29,47 @@ public class Init : MonoBehaviour
         //开始连接服务器检查更新
         var handle = Addressables.CheckForCatalogUpdates(false);
         await handle.Task;
-        Debug.LogError("check catalog status " + handle.Status);
+        Debug.LogError("检查目录状态" + handle.Status);
         if (handle.Status == AsyncOperationStatus.Succeeded)
         {
             List<string> catalogs = handle.Result;
-            if (catalogs != null && catalogs.Count > 0)
+            if (catalogs == null)
             {
+                lab.text = "catalogs == null";
+            }
+            else if (catalogs.Count == 0)
+            {
+                lab.text = "catalogs.Count == 0";
+            }
+            else if (catalogs != null && catalogs.Count > 0)
+            {
+                lab.text = "有更新";
+                Debug.LogError("有更新");
                 //foreach (var catalog in catalogs)
                 //{
                 //    Debug.LogError("catalog  " + catalog);
                 //}
-                Debug.LogError("download catalog start ");
-                var updateHandle = Addressables.UpdateCatalogs(catalogs, false);
-                await updateHandle.Task;
+                //Debug.LogError("开始下载目录");
+                //var updateHandle = Addressables.UpdateCatalogs(catalogs, false);
+                //await updateHandle.Task;
 
-                foreach (var item in updateHandle.Result)
-                {
-                    //Debug.LogError("catalog result " + item.LocatorId);
-                    //foreach (var key in item.Keys)
-                    //{
-                    //    Debug.LogError("catalog key " + key);
-                    //}
-                    _updateKeys.AddRange(item.Keys);
-                }
-                Debug.LogError("download catalog finish " + updateHandle.Status);
+                //foreach (var item in updateHandle.Result)
+                //{
+                //    //Debug.LogError("catalog result " + item.LocatorId);
+                //    //foreach (var key in item.Keys)
+                //    //{
+                //    //    Debug.LogError("catalog key " + key);
+                //    //}
+                //    _updateKeys.AddRange(item.Keys);
+                //}
+                //Debug.LogError("download catalog finish " + updateHandle.Status);
 
-                DownLoad();
+                //DownLoad();
             }
             else
             {
                 Debug.LogError("不需要更新");
+                lab.text = "无更新";
             }
         }
         Addressables.Release(handle);
@@ -122,5 +136,10 @@ public class Init : MonoBehaviour
         Addressables.Release(downloadsize);
 
         action();
+    }
+
+    private void BtnOnClick()
+    {
+        SceneManager.LoadScene("Main");
     }
 }

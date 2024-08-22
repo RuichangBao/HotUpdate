@@ -15,10 +15,10 @@ MonoBehaviour:
   m_GroupName: group3
   m_Data:
     m_SerializedData: []
-  m_GUID: 67e8c6c7b0c48364db922b57d1b1015c
+  m_GUID: fe6ab889f1baad446abcdf2d7a0aa9b1
   m_SerializeEntries:
-  - m_GUID: b7e039331b30a204391ff0c715196676
-    m_Address: Assets/Prefabs/UIStart 1.prefab
+  - m_GUID: a6b9956bbbf47f94aae1babc3dc6c1ed
+    m_Address: UIMain
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -26,5 +26,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: af8e5ac947286af48b6a62e63e0e111c, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: f2d17d71c276bee47bc26fabbbc21f8d, type: 2}
-    - {fileID: 11400000, guid: afbe42b82e4f1fa4db70388fcba5d53d, type: 2}
+    - {fileID: 11400000, guid: 089bba4c4bc627441b315d4cb5a4208f, type: 2}
+    - {fileID: 11400000, guid: d7710ac91f9d4a04e948f745c2a1185a, type: 2}
