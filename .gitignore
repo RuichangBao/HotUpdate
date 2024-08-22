@@ -1,4 +1,6 @@
 *.vs
+*.sln
+*.csproj
 UnityPackageManager
 Temp
 bin
