@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Address: UIStart
     m_ReadOnly: 0
     m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+    FlaggedDuringContentUpdateRestriction: 1
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0ddbb2804ad6ea94da953f3dab389938, type: 2}
   m_SchemaSet:
