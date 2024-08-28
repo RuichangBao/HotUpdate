@@ -1,31 +1,35 @@
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
+using FrameWork;
 
-public class UIMain : MonoBehaviour
+namespace UI
 {
-    public Button btn;
-    private AsyncOperationHandle<GameObject> handle;
-    private GameObject go;
-
-    void Start()
+    public class UIMain : MonoBehaviour
     {
-        btn.onClick.AddListener(BtnOnClick);
-    }
+        public Button btn;
+        private AsyncOperationHandle<GameObject> handle;
+        private GameObject go;
 
-    private void BtnOnClick()
-    {
-        AddressablesUtil.InstantiateAsync(ref handle, "UIStart", OnLoaded);
-    }
+        void Start()
+        {
+            btn.onClick.AddListener(BtnOnClick);
+        }
 
-    private void OnLoaded(AsyncOperationHandle<GameObject> handle)
-    {
-        go = handle.Result;
-    }
+        private void BtnOnClick()
+        {
+            AddressablesUtil.InstantiateAsync(ref handle, "UIStart", OnLoaded);
+        }
 
-    private void OnDestroy()
-    {
-        Destroy(go);
-        AddressablesUtil.ReleaseInstance(ref handle, OnLoaded);
+        private void OnLoaded(AsyncOperationHandle<GameObject> handle)
+        {
+            go = handle.Result;
+        }
+
+        private void OnDestroy()
+        {
+            Destroy(go);
+            AddressablesUtil.ReleaseInstance(ref handle, OnLoaded);
+        }
     }
 }
