@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: eea78b59c1c41334c981842d88e20f16
-  m_SerializeEntries:
-  - m_GUID: 32e43aa84dcd2cf4a9b4e54474be9dc7
-    m_Address: Assets/Assembly/FrameWork.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0ddbb2804ad6ea94da953f3dab389938, type: 2}
   m_SchemaSet:
