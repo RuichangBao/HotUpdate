@@ -792,7 +792,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIMain_BtnOnClick_mF74324A9F2C2E364DB208
 		Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* L_6 = __this->___labResult;
 		int32_t L_7 = V_0;
 		int32_t L_8 = V_1;
-		V_2 = ((int32_t)il2cpp_codegen_add(L_7, L_8));
+		V_2 = ((int32_t)il2cpp_codegen_subtract(L_7, L_8));
 		String_t* L_9;
 		L_9 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5((&V_2), NULL);
 		NullCheck(L_6);

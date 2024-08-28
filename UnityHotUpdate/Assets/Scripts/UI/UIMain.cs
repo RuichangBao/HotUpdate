@@ -20,7 +20,7 @@ namespace UI
         {
             int num1 = int.Parse(inputField1.text);
             int num2 = int.Parse(inputField2.text);
-            labResult.text = (num1 + num2).ToString();
+            labResult.text = (num1 - num2).ToString();
         }
 
     }
