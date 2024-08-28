@@ -7,9 +7,9 @@ namespace UI
 {
     public class UIMain : MonoBehaviour
     {
+        public InputField inputField1, inputField2;
         public Button btn;
-        private AsyncOperationHandle<GameObject> handle;
-        private GameObject go;
+        public Text labResult;
 
         void Start()
         {
@@ -18,18 +18,10 @@ namespace UI
 
         private void BtnOnClick()
         {
-            AddressablesUtil.InstantiateAsync(ref handle, "UIStart", OnLoaded);
+            int num1 = int.Parse(inputField1.text);
+            int num2 = int.Parse(inputField2.text);
+            labResult.text = (num1 + num2).ToString();
         }
 
-        private void OnLoaded(AsyncOperationHandle<GameObject> handle)
-        {
-            go = handle.Result;
-        }
-
-        private void OnDestroy()
-        {
-            Destroy(go);
-            AddressablesUtil.ReleaseInstance(ref handle, OnLoaded);
-        }
     }
 }
