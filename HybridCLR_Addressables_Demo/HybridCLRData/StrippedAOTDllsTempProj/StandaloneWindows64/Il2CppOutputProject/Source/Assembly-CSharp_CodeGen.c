@@ -12,6 +12,8 @@
 
 
 
+extern void AOTGenericReferences__ctor_m41CBD692FC9B521512E552575AFE7A385DEC71A6 (void);
+extern void AOTGenericReferences__cctor_mA46BDC06A6577D725A2E5284A2A34C974CE65F68 (void);
 extern void AddressableAssetManager_get_HasContentToDownload_m827FE89FF5C29FABBCA24A8A5450AD532A32220E (void);
 extern void AddressableAssetManager_UnloadAsset_m1DF47E57D6EBC7D265DBBB5848C5FD569557A347 (void);
 extern void AddressableAssetManager_CheckUpdate_m2EF7C84B293F071B9BDF0EC8BB10E15E4DF66691 (void);
@@ -151,8 +153,10 @@ extern void UIVersionUpdate_Update_m871347E7BC807CA6B4E007B28F27CEA3681C89A4 (vo
 extern void UIVersionUpdate_BytesToMB_m6F024F34975A61640A75241B14A62F9783399131 (void);
 extern void UIVersionUpdate_OnDestroy_m916A158246D6CDABBAB282CA7A72E68F79DF5596 (void);
 extern void UIVersionUpdate__ctor_m803DB6546AEF2AF885326D17EA24E987212BBCCE (void);
-static Il2CppMethodPointer s_methodPointers[148] = 
+static Il2CppMethodPointer s_methodPointers[150] = 
 {
+	AOTGenericReferences__ctor_m41CBD692FC9B521512E552575AFE7A385DEC71A6,
+	AOTGenericReferences__cctor_mA46BDC06A6577D725A2E5284A2A34C974CE65F68,
 	AddressableAssetManager_get_HasContentToDownload_m827FE89FF5C29FABBCA24A8A5450AD532A32220E,
 	NULL,
 	AddressableAssetManager_UnloadAsset_m1DF47E57D6EBC7D265DBBB5848C5FD569557A347,
@@ -305,10 +309,12 @@ static Il2CppMethodPointer s_methodPointers[148] =
 extern void DownloadInfo__ctor_mE2053AD565B799AA43F9513010DF5FFD40BB129F_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[1] = 
 {
-	{ 0x0600008F, DownloadInfo__ctor_mE2053AD565B799AA43F9513010DF5FFD40BB129F_AdjustorThunk },
+	{ 0x06000091, DownloadInfo__ctor_mE2053AD565B799AA43F9513010DF5FFD40BB129F_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[148] = 
+static const int32_t s_InvokerIndices[150] = 
 {
+	5175,
+	7579,
 	4988,
 	0,
 	4208,
@@ -460,7 +466,7 @@ static const int32_t s_InvokerIndices[148] =
 };
 static const Il2CppTokenRangePair s_rgctxIndices[1] = 
 {
-	{ 0x06000002, { 0, 7 } },
+	{ 0x06000004, { 0, 7 } },
 };
 extern const uint32_t g_rgctx_Addressables_LoadAssetAsync_TisT_t2A187CA7BE2783A805E64762DC4CC8CE1E4291FC_m47663FBC26EB0525035A78AFDBC6FDC57F3EE1F2;
 extern const uint32_t g_rgctx_AsyncOperationHandle_1_t701EA74103D259B1FA7FDAF874ACC7F7F7C96B3D;
@@ -483,7 +489,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	148,
+	150,
 	s_methodPointers,
 	1,
 	s_adjustorThunks,
