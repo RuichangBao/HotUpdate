@@ -12,6 +12,9 @@
 
 
 
+extern void AOTGenericReferences_RefMethods_m17CF257D96D8BC2F232C4C1502905B792D17170C (void);
+extern void AOTGenericReferences__ctor_m41CBD692FC9B521512E552575AFE7A385DEC71A6 (void);
+extern void AOTGenericReferences__cctor_mA46BDC06A6577D725A2E5284A2A34C974CE65F68 (void);
 extern void AddressablesUpdater_Start_m6F477926BDF821DCF840BF293D59B8950F310975 (void);
 extern void AddressablesUpdater_InitializeAsyncCompleted_m9F9C6FA7780471C36F36F32F697130FF71683C35 (void);
 extern void AddressablesUpdater_CheckForUpdates_m0A8C1FEBE55F73B2AC00856C4DF40EB25BA07318 (void);
@@ -37,8 +40,11 @@ extern void UIMain_BtnOnClick_m1606B6CC4383E020E159A1C28F0D5FD1F5EE5C90 (void);
 extern void UIMain__ctor_m5A91812BF93BDE25C25FFD5D3D877B4177440EA8 (void);
 extern void AddressablesUtil_InstantiateAsync_m28D6F60F1B048AC99168C7E66956AD066FA3E4C3 (void);
 extern void AddressablesUtil_ReleaseInstance_m70FA790AE767903FB166CF50173A8F0372B14507 (void);
-static Il2CppMethodPointer s_methodPointers[25] = 
+static Il2CppMethodPointer s_methodPointers[28] = 
 {
+	AOTGenericReferences_RefMethods_m17CF257D96D8BC2F232C4C1502905B792D17170C,
+	AOTGenericReferences__ctor_m41CBD692FC9B521512E552575AFE7A385DEC71A6,
+	AOTGenericReferences__cctor_mA46BDC06A6577D725A2E5284A2A34C974CE65F68,
 	AddressablesUpdater_Start_m6F477926BDF821DCF840BF293D59B8950F310975,
 	AddressablesUpdater_InitializeAsyncCompleted_m9F9C6FA7780471C36F36F32F697130FF71683C35,
 	AddressablesUpdater_CheckForUpdates_m0A8C1FEBE55F73B2AC00856C4DF40EB25BA07318,
@@ -65,8 +71,11 @@ static Il2CppMethodPointer s_methodPointers[25] =
 	AddressablesUtil_InstantiateAsync_m28D6F60F1B048AC99168C7E66956AD066FA3E4C3,
 	AddressablesUtil_ReleaseInstance_m70FA790AE767903FB166CF50173A8F0372B14507,
 };
-static const int32_t s_InvokerIndices[25] = 
+static const int32_t s_InvokerIndices[28] = 
 {
+	4845,
+	4845,
+	7110,
 	4845,
 	3629,
 	4845,
@@ -97,7 +106,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	25,
+	28,
 	s_methodPointers,
 	0,
 	NULL,
