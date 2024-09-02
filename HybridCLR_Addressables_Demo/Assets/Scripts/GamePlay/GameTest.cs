@@ -24,13 +24,13 @@ namespace GamePlay
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void TestRuntimeInitialize1()
         {
-            Debug.LogError("TestRuntimeInitialize1");
+            Debug.LogError("当第一个场景的对象加载到内存中时，在调用Awake之前调用回调。");
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
         private static void TestRuntimeInitialize2()
         {
-            Debug.LogError("TestRuntimeInitialize2");
+            Debug.LogError("在加载所有程序集和初始化预加载资源时调用回调。此时，第一个场景的对象还没有加载。");
         }
 
         #endregion

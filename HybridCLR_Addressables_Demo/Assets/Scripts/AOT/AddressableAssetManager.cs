@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
@@ -59,23 +60,24 @@ namespace AOT
 
         public IEnumerator CheckUpdate()
         {
-            var checkUpdateOP = Addressables.CheckForCatalogUpdates(false);
+            AsyncOperationHandle<List<string>> checkUpdateOP = Addressables.CheckForCatalogUpdates(false);
             yield return checkUpdateOP;
             if (checkUpdateOP.Status == AsyncOperationStatus.Succeeded)
             {
                 _downloadContent.catalogs = checkUpdateOP.Result;
                 if (HasContentToDownload)
                 {
-                    Debug.LogError("AAAAA 需要更新");
-                    Debug.Log("new version on server");
+                    Debug.Log("需要更新");
                     //说明服务器上有新的资源，记录要下载的catalog值在playerprefs中,如果下载的过程中被打断，下次打开游戏使用该值还能继续下载
-                    var jsonStr = JsonUtility.ToJson(_downloadContent);
+
+                    string jsonStr = JsonUtility.ToJson(_downloadContent);
+                    Debug.Log($"下载文件{jsonStr}");
                     PlayerPrefs.SetString(DOWNLOAD_CATALOGS_ID, jsonStr);
                     PlayerPrefs.Save();
                 }
                 else
                 {
-                    Debug.LogError("AAAAA 不需要更新");
+                    Debug.LogError("不需要更新");
                     if (PlayerPrefs.HasKey(DOWNLOAD_CATALOGS_ID))
                     {
                         //上一次的更新还没下载完
@@ -112,7 +114,7 @@ namespace AOT
             }
             else
             {
-                Debug.LogError($"CheckUpdate failed!exception:{checkUpdateOP.OperationException.Message}");
+                Debug.LogError($"检查更新失败！异常:{checkUpdateOP.OperationException.Message}");
             }
 
             Addressables.Release(checkUpdateOP);
@@ -122,25 +124,30 @@ namespace AOT
 
         public IEnumerator DownloadAssets()
         {
-            var downloadSizeOp = Addressables.GetDownloadSizeAsync((IEnumerable)_KeysNeedToDownload);
+            AsyncOperationHandle<long> downloadSizeOp = Addressables.GetDownloadSizeAsync((IEnumerable)_KeysNeedToDownload);
             yield return downloadSizeOp;
-            Debug.Log($"download size:{downloadSizeOp.Result / (1024f * 1024f)}MB");
+            Debug.Log($"下载大小:{downloadSizeOp.Result / (1024f * 1024f)}MB");
 
             if (downloadSizeOp.Result > 0)
             {
                 Addressables.Release(downloadSizeOp);
-
-                _downloadOP =
-                    Addressables.DownloadDependenciesAsync((IEnumerable)_KeysNeedToDownload,
-                        Addressables.MergeMode.Union, false);
+                if (_KeysNeedToDownload.Count > 0)
+                {
+                    Debug.Log($"需要下载数量{_KeysNeedToDownload.Count}");
+                    for (int i = 0; i < _KeysNeedToDownload.Count; i++)
+                    {
+                        Debug.Log(_KeysNeedToDownload[i]);
+                    }
+                }
+                _downloadOP = Addressables.DownloadDependenciesAsync((IEnumerable)_KeysNeedToDownload, Addressables.MergeMode.Union, false);
 
                 yield return _downloadOP;
 
                 if (_downloadOP.Status == AsyncOperationStatus.Succeeded)
-                    Debug.Log($"download finish!");
+                    Debug.Log($"下载完成!");
                 else
                     Debug.LogError(
-                        $"Download Failed! exception:{_downloadOP.OperationException.Message} \r\n {_downloadOP.OperationException.StackTrace}");
+                        $"下载失败! 异常:{_downloadOP.OperationException.Message} \r\n {_downloadOP.OperationException.StackTrace}");
 
                 Addressables.Release(_downloadOP);
             }
@@ -186,7 +193,7 @@ namespace AOT
         /// <returns></returns>
         private IEnumerator ReloadAddressableCatalog()
         {
-            var op = Addressables.LoadContentCatalogAsync($"{Addressables.RuntimePath}/catalog.json");
+            AsyncOperationHandle<IResourceLocator> op = Addressables.LoadContentCatalogAsync($"{Addressables.RuntimePath}/catalog.json");
             yield return op;
             if (op.Status != AsyncOperationStatus.Succeeded)
             {

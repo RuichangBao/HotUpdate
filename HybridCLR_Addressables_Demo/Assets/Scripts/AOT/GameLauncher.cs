@@ -128,10 +128,10 @@ namespace AOT
 
         private IEnumerator VersionCheck()
         {
-            Debug.Log($"VersionCheck start!");
+            Debug.Log($"版本检查开始!");
             yield return CheckNewAPPVersion();
             yield return _assetManager.CheckUpdate();
-            Debug.Log($"VersionCheck finish,has Content to download:{_assetManager.HasContentToDownload}");
+            Debug.Log($"版本检查完成，有内容要下载:{_assetManager.HasContentToDownload}");
         }
 
         /// <summary>
