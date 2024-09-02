@@ -70,7 +70,7 @@ MonoBehaviour:
       - m_Id: eb46dfd26026b60418889b30d9b7d92a
         m_Value: F:\HttpServer\[BuildTarget]
       - m_Id: d388ccacf8397ea4bab922b24131c94b
-        m_Value: http://192.168.1.11:8080/[BuildTarget]
+        m_Value: http://192.168.3.70:8080/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 5df9c38d23aed2e4bb0c3d13c7a078f8
       m_Name: BuildTarget
@@ -106,35 +106,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1a8ad183ec4cc1f4a8a3c5de367d86d0, type: 2}
   m_ActiveProfileId: 705c9dd9c75810f459b9d33be851362d
   m_HostingServicesManager:
-    m_HostingServiceInfos:
-    - classRef: UnityEditor.AddressableAssets.HostingServices.HttpHostingService,
-        Unity.Addressables.Editor
-      dataStore:
-        m_SerializedData:
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.Int32
-          m_Data: 59754
-          m_Key: HostingServicePort
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.Int32
-          m_Data: 0
-          m_Key: HostingServiceUploadSpeed
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.String
-          m_Data: F:\HttpServer\StandaloneWindows64;Library/com.unity.addressables/aa/Windows/StandaloneWindows64
-          m_Key: ContentRoot
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.Boolean
-          m_Data: True
-          m_Key: IsEnabled
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.String
-          m_Data: Local Hosting 0
-          m_Key: DescriptiveName
-        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-          m_ClassName: System.Int32
-          m_Data: 0
-          m_Key: InstanceId
+    m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}
     m_NextInstanceId: 1
     m_RegisteredServiceTypeRefs:
