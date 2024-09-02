@@ -4006,9 +4006,6 @@
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\generated\MethodBridge.cpp">
       <Filter>IL2CPP\libil2cpp\hybridclr\generated</Filter>
     </ClCompile>
-    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\generated\ReversePInvokeMethodStub.cpp">
-      <Filter>IL2CPP\libil2cpp\hybridclr\generated</Filter>
-    </ClCompile>
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\generated\UnityVersion.h">
       <Filter>IL2CPP\libil2cpp\hybridclr\generated</Filter>
     </ClInclude>
@@ -4123,6 +4120,12 @@
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataModule.h">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClInclude>
+    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataPool.cpp">
+      <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
+    </ClCompile>
+    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataPool.h">
+      <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
+    </ClInclude>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataUtil.cpp">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClCompile>
@@ -4135,13 +4138,22 @@
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\Opcodes.h">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClInclude>
+    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\PDBImage.cpp">
+      <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
+    </ClCompile>
+    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\PDBImage.h">
+      <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
+    </ClInclude>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImage.cpp">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClCompile>
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImage.h">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClInclude>
-    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\ReversePInvokeMethodStub.h">
+    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImageBase.cpp">
+      <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
+    </ClCompile>
+    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImageBase.h">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClInclude>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\SuperSetAOTHomologousImage.cpp">
@@ -6137,6 +6149,9 @@
       <Filter>IL2CPP\libil2cpp\utils</Filter>
     </ClInclude>
     <ClInclude Include="IL2CPP\libil2cpp\utils\Il2CppHashSet.h">
+      <Filter>IL2CPP\libil2cpp\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="IL2CPP\libil2cpp\utils\InitOnce.h">
       <Filter>IL2CPP\libil2cpp\utils</Filter>
     </ClInclude>
     <ClInclude Include="IL2CPP\libil2cpp\utils\KeyWrapper.h">

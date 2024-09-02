@@ -94,47 +94,48 @@ namespace metadata
         il2cpp::vm::Runtime::ClassInit(moduleKlass);
     }
 
-    Il2CppAssembly* Assembly::LoadFromBytes(const void* assemblyData, uint64_t length, bool copyData)
+    Il2CppAssembly* Assembly::LoadFromBytes(const void* assemblyData, uint64_t length, const void* rawSymbolStoreBytes, uint64_t rawSymbolStoreLength)
     {
-        Il2CppAssembly* ass = Create((const byte*)assemblyData, length, copyData);
-        if (ass)
-        {
-            RunModuleInitializer(ass->image);
-        }
+        Il2CppAssembly* ass = Create((const byte*)assemblyData, length, (const byte*)rawSymbolStoreBytes, rawSymbolStoreLength);
+        RunModuleInitializer(ass->image);
         return ass;
     }
 
-    Il2CppAssembly* Assembly::Create(const byte* assemblyData, uint64_t length, bool copyData)
+    Il2CppAssembly* Assembly::Create(const byte* assemblyData, uint64_t length, const byte* rawSymbolStoreBytes, uint64_t rawSymbolStoreLength)
     {
         il2cpp::os::FastAutoLock lock(&il2cpp::vm::g_MetadataLock);
+
         if (!assemblyData)
         {
             il2cpp::vm::Exception::Raise(il2cpp::vm::Exception::GetArgumentNullException("rawAssembly is null"));
         }
 
-        uint32_t imageId = InterpreterImage::AllocImageIndex();
-        if (imageId > kMaxLoadImageCount)
+        uint32_t imageId = InterpreterImage::AllocImageIndex((uint32_t)length);
+        if (imageId == kInvalidImageIndex)
         {
-            il2cpp::vm::Exception::Raise(il2cpp::vm::Exception::GetArgumentException("exceed max image index", ""));
+            il2cpp::vm::Exception::Raise(il2cpp::vm::Exception::GetExecutionEngineException("InterpreterImage::AllocImageIndex failed"));
         }
         InterpreterImage* image = new InterpreterImage(imageId);
         
-        if (copyData)
-        {
-            assemblyData = (const byte*)CopyBytes(assemblyData, length);
-        }
+        assemblyData = (const byte*)CopyBytes(assemblyData, length);
         LoadImageErrorCode err = image->Load(assemblyData, (size_t)length);
-
 
         if (err != LoadImageErrorCode::OK)
         {
-            if (copyData)
-            {
-                HYBRIDCLR_FREE((void*)assemblyData);
-            }
             TEMP_FORMAT(errMsg, "LoadImageErrorCode:%d", (int)err);
             il2cpp::vm::Exception::Raise(il2cpp::vm::Exception::GetBadImageFormatException(errMsg));
             // when load a bad image, mean a fatal error. we don't clean image on purpose.
+        }
+
+        if (rawSymbolStoreBytes)
+        {
+            rawSymbolStoreBytes = (const byte*)CopyBytes(rawSymbolStoreBytes, rawSymbolStoreLength);
+            err = image->LoadPDB(rawSymbolStoreBytes, (size_t)rawSymbolStoreLength);
+            if (err != LoadImageErrorCode::OK)
+            {
+                TEMP_FORMAT(errMsg, "LoadPDB Error:%d", (int)err);
+                il2cpp::vm::Exception::Raise(il2cpp::vm::Exception::GetBadImageFormatException(errMsg));
+            }
         }
 
         TbAssembly data = image->GetRawImage().ReadAssembly(1);
