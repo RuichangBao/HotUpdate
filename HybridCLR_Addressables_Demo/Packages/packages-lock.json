@@ -8,18 +8,17 @@
       "hash": "59bc259cc88898425620535d282192503ba99399"
     },
     "com.unity.addressables": {
-      "version": "1.21.21",
+      "version": "file:com.unity.addressables@1.21.21",
       "depth": 0,
-      "source": "registry",
+      "source": "embedded",
       "dependencies": {
-        "com.unity.modules.assetbundle": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.modules.imageconversion": "1.0.0",
-        "com.unity.modules.unitywebrequest": "1.0.0",
         "com.unity.scriptablebuildpipeline": "1.21.23",
+        "com.unity.modules.assetbundle": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
         "com.unity.modules.unitywebrequestassetbundle": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
+      }
     },
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
