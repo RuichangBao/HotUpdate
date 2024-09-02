@@ -21922,6 +21922,13 @@ static void __M2N_vui4r4(const MethodInfo* method, uint16_t* argVarIndexs, Stack
 }
 
 
+static void __M2N_vui4r4r4(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
+{
+    typedef void (*NativeMethod)(uintptr_t __arg0, int32_t __arg1, float __arg2, float __arg3, const MethodInfo* method);
+    ((NativeMethod)(method->methodPointerCallByInterp))(M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[0]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[1]), M2NFromValueOrAddress<float>(localVarBase+argVarIndexs[2]), M2NFromValueOrAddress<float>(localVarBase+argVarIndexs[3]), method);
+}
+
+
 static void __M2N_vui4r4r4r4r4r4r4r4r4uu(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
 {
     typedef void (*NativeMethod)(uintptr_t __arg0, int32_t __arg1, float __arg2, float __arg3, float __arg4, float __arg5, float __arg6, float __arg7, float __arg8, float __arg9, uintptr_t __arg10, uintptr_t __arg11, const MethodInfo* method);
@@ -25023,6 +25030,13 @@ static void __M2N_vuui4i4i4i4i4(const MethodInfo* method, uint16_t* argVarIndexs
 }
 
 
+static void __M2N_vuui4i4i4i4u1i4(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
+{
+    typedef void (*NativeMethod)(uintptr_t __arg0, uintptr_t __arg1, int32_t __arg2, int32_t __arg3, int32_t __arg4, int32_t __arg5, uint8_t __arg6, int32_t __arg7, const MethodInfo* method);
+    ((NativeMethod)(method->methodPointerCallByInterp))(M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[0]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[1]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[2]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[3]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[4]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[5]), M2NFromValueOrAddress<uint8_t>(localVarBase+argVarIndexs[6]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[7]), method);
+}
+
+
 static void __M2N_vuui4i4i4r4(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
 {
     typedef void (*NativeMethod)(uintptr_t __arg0, uintptr_t __arg1, int32_t __arg2, int32_t __arg3, int32_t __arg4, float __arg5, const MethodInfo* method);
@@ -25055,6 +25069,13 @@ static void __M2N_vuui4i4u1(const MethodInfo* method, uint16_t* argVarIndexs, St
 {
     typedef void (*NativeMethod)(uintptr_t __arg0, uintptr_t __arg1, int32_t __arg2, int32_t __arg3, uint8_t __arg4, const MethodInfo* method);
     ((NativeMethod)(method->methodPointerCallByInterp))(M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[0]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[1]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[2]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[3]), M2NFromValueOrAddress<uint8_t>(localVarBase+argVarIndexs[4]), method);
+}
+
+
+static void __M2N_vuui4i4u1i4(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
+{
+    typedef void (*NativeMethod)(uintptr_t __arg0, uintptr_t __arg1, int32_t __arg2, int32_t __arg3, uint8_t __arg4, int32_t __arg5, const MethodInfo* method);
+    ((NativeMethod)(method->methodPointerCallByInterp))(M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[0]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[1]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[2]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[3]), M2NFromValueOrAddress<uint8_t>(localVarBase+argVarIndexs[4]), M2NFromValueOrAddress<int32_t>(localVarBase+argVarIndexs[5]), method);
 }
 
 
@@ -26147,6 +26168,13 @@ static void __M2N_vuuuuuuu(const MethodInfo* method, uint16_t* argVarIndexs, Sta
 {
     typedef void (*NativeMethod)(uintptr_t __arg0, uintptr_t __arg1, uintptr_t __arg2, uintptr_t __arg3, uintptr_t __arg4, uintptr_t __arg5, uintptr_t __arg6, const MethodInfo* method);
     ((NativeMethod)(method->methodPointerCallByInterp))(M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[0]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[1]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[2]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[3]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[4]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[5]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[6]), method);
+}
+
+
+static void __M2N_vuuuuuuuu(const MethodInfo* method, uint16_t* argVarIndexs, StackObject* localVarBase, void* ret)
+{
+    typedef void (*NativeMethod)(uintptr_t __arg0, uintptr_t __arg1, uintptr_t __arg2, uintptr_t __arg3, uintptr_t __arg4, uintptr_t __arg5, uintptr_t __arg6, uintptr_t __arg7, const MethodInfo* method);
+    ((NativeMethod)(method->methodPointerCallByInterp))(M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[0]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[1]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[2]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[3]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[4]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[5]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[6]), M2NFromValueOrAddress<uintptr_t>(localVarBase+argVarIndexs[7]), method);
 }
 
 
@@ -28693,6 +28721,7 @@ Managed2NativeMethodInfo hybridclr::interpreter::g_managed2nativeStub[] =
 	{"vui4i8", __M2N_vui4i8},
 	{"vui4i8i8u1", __M2N_vui4i8i8u1},
 	{"vui4r4", __M2N_vui4r4},
+	{"vui4r4r4", __M2N_vui4r4r4},
 	{"vui4r4r4r4r4r4r4r4r4uu", __M2N_vui4r4r4r4r4r4r4r4r4uu},
 	{"vui4r4u", __M2N_vui4r4u},
 	{"vui4r4uu", __M2N_vui4r4uu},
@@ -29136,11 +29165,13 @@ Managed2NativeMethodInfo hybridclr::interpreter::g_managed2nativeStub[] =
 	{"vuui4i4i4", __M2N_vuui4i4i4},
 	{"vuui4i4i4i4", __M2N_vuui4i4i4i4},
 	{"vuui4i4i4i4i4", __M2N_vuui4i4i4i4i4},
+	{"vuui4i4i4i4u1i4", __M2N_vuui4i4i4i4u1i4},
 	{"vuui4i4i4r4", __M2N_vuui4i4i4r4},
 	{"vuui4i4i4u", __M2N_vuui4i4i4u},
 	{"vuui4i4i4u1i4", __M2N_vuui4i4i4u1i4},
 	{"vuui4i4u", __M2N_vuui4i4u},
 	{"vuui4i4u1", __M2N_vuui4i4u1},
+	{"vuui4i4u1i4", __M2N_vuui4i4u1i4},
 	{"vuui4i4u2", __M2N_vuui4i4u2},
 	{"vuui4i8", __M2N_vuui4i8},
 	{"vuui4r4", __M2N_vuui4r4},
@@ -29297,6 +29328,7 @@ Managed2NativeMethodInfo hybridclr::interpreter::g_managed2nativeStub[] =
 	{"vuuuuuui4uu", __M2N_vuuuuuui4uu},
 	{"vuuuuuur4s24s24uu1u", __M2N_vuuuuuur4s24s24uu1u},
 	{"vuuuuuuu", __M2N_vuuuuuuu},
+	{"vuuuuuuuu", __M2N_vuuuuuuuu},
 	{"vuuuuuuuuu", __M2N_vuuuuuuuuu},
 	{"vuuuuuuuuuu", __M2N_vuuuuuuuuuu},
 	{nullptr, nullptr},

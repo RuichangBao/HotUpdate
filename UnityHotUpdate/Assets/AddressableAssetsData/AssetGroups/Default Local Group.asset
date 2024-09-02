@@ -15,18 +15,8 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_Data:
     m_SerializedData: []
-  m_GUID: 650d11823d74d894a817b82031b70a8b
-  m_SerializeEntries:
-  - m_GUID: 7ebb736d7ca9e7047b1764d9eb57c7e4
-    m_Address: Assets/Scripts/FrameWork
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ff48b44213d45a44b8690c0b26030e46
-    m_Address: Assets/Scripts
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_GUID: c1c39dfe14450d8459831178c23b26ec
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0ddbb2804ad6ea94da953f3dab389938, type: 2}
   m_SchemaSet:

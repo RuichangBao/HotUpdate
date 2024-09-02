@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
-  m_DefaultGroup: 650d11823d74d894a817b82031b70a8b
+  m_DefaultGroup: c1c39dfe14450d8459831178c23b26ec
   m_currentHash:
     serializedVersion: 2
-    Hash: 6a191740369f21da52888d09a099150b
+    Hash: fc384438bafc05771c0ace2ce68c87f2
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
   m_CatalogRequestsTimeout: 0
-  m_DisableCatalogUpdateOnStart: 0
+  m_DisableCatalogUpdateOnStart: 1
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
   m_NonRecursiveBuilding: 1
@@ -35,9 +35,9 @@ MonoBehaviour:
   m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: a2c5c4bccd7699c499ed12df2f71f290
+    m_Id: c4157eebbb90c0b4b930ac4f6e9073ac
   m_RemoteCatalogLoadPath:
-    m_Id: 79fbaa54cd3311741834fae209f71986
+    m_Id: f17ac568bd4ceca4a8d1dcd337769d28
   m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 573683d9fc372b244ade4e927cce3588, type: 2}
   - {fileID: 11400000, guid: b8bfcffe543b98e489deb2e96f430ac5, type: 2}
-  - {fileID: 11400000, guid: c8b313e8819d6474aa62f0effcff171d, type: 2}
-  - {fileID: 11400000, guid: a3272069ce6560a4aa0516bd0661e7cb, type: 2}
+  - {fileID: 11400000, guid: d517b78514665de44af60cd118de797b, type: 2}
+  - {fileID: 11400000, guid: 31846575b73977a4781e16cb9a8bd1b1, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -56,33 +56,33 @@ MonoBehaviour:
   m_ProfileSettings:
     m_Profiles:
     - m_InheritedParent: 
-      m_Id: 82fa8acf57a6e5f4caf192739a491c1b
+      m_Id: d15ff825741b8dc40b652492ccca2684
       m_ProfileName: Default
       m_Values:
-      - m_Id: 1c9c7573cbf71bf4b87f96ea06a00d7f
+      - m_Id: 0fcf3441fef6dc846b89c88646fdf3de
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
-      - m_Id: 5f54253597b53bf47b1b70113f4694a2
+      - m_Id: eb16aa1ff82a1bd44a1052c7db13b9f5
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
-      - m_Id: 855e6c3407bb8b642876e4424326c3f8
+      - m_Id: f06271a13dbcb9c428c60d3b486cfdca
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
-      - m_Id: a2c5c4bccd7699c499ed12df2f71f290
+      - m_Id: c4157eebbb90c0b4b930ac4f6e9073ac
         m_Value: D:\HttpServer\[BuildTarget]
-      - m_Id: 79fbaa54cd3311741834fae209f71986
-        m_Value: http://192.168.3.40:8080/[BuildTarget]
+      - m_Id: f17ac568bd4ceca4a8d1dcd337769d28
+        m_Value: http://[PrivateIpAddress]:8080/[BuildTarget]
     m_ProfileEntryNames:
-    - m_Id: 1c9c7573cbf71bf4b87f96ea06a00d7f
+    - m_Id: 0fcf3441fef6dc846b89c88646fdf3de
       m_Name: BuildTarget
       m_InlineUsage: 0
-    - m_Id: 5f54253597b53bf47b1b70113f4694a2
+    - m_Id: eb16aa1ff82a1bd44a1052c7db13b9f5
       m_Name: Local.BuildPath
       m_InlineUsage: 0
-    - m_Id: 855e6c3407bb8b642876e4424326c3f8
+    - m_Id: f06271a13dbcb9c428c60d3b486cfdca
       m_Name: Local.LoadPath
       m_InlineUsage: 0
-    - m_Id: a2c5c4bccd7699c499ed12df2f71f290
+    - m_Id: c4157eebbb90c0b4b930ac4f6e9073ac
       m_Name: Remote.BuildPath
       m_InlineUsage: 0
-    - m_Id: 79fbaa54cd3311741834fae209f71986
+    - m_Id: f17ac568bd4ceca4a8d1dcd337769d28
       m_Name: Remote.LoadPath
       m_InlineUsage: 0
     m_ProfileVersion: 1
@@ -102,7 +102,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4e1df20ad174d784f95bd42c17bc0c4b, type: 2}
   - {fileID: 11400000, guid: b584f1daf52c5784cb2a6a1625fa2350, type: 2}
   - {fileID: 11400000, guid: 65a6c7ac1954cf64fbc5ebd0fb77e9bd, type: 2}
-  m_ActiveProfileId: 82fa8acf57a6e5f4caf192739a491c1b
+  m_ActiveProfileId: d15ff825741b8dc40b652492ccca2684
   m_HostingServicesManager:
     m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}

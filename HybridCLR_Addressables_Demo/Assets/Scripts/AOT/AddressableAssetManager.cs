@@ -66,6 +66,7 @@ namespace AOT
                 _downloadContent.catalogs = checkUpdateOP.Result;
                 if (HasContentToDownload)
                 {
+                    Debug.LogError("AAAAA 需要更新");
                     Debug.Log("new version on server");
                     //说明服务器上有新的资源，记录要下载的catalog值在playerprefs中,如果下载的过程中被打断，下次打开游戏使用该值还能继续下载
                     var jsonStr = JsonUtility.ToJson(_downloadContent);
@@ -74,6 +75,7 @@ namespace AOT
                 }
                 else
                 {
+                    Debug.LogError("AAAAA 不需要更新");
                     if (PlayerPrefs.HasKey(DOWNLOAD_CATALOGS_ID))
                     {
                         //上一次的更新还没下载完

@@ -44,8 +44,6 @@
   <ItemGroup>
     <ClCompile Include="Source\Assembly-CSharp.cpp">
     </ClCompile>
-    <ClCompile Include="Source\FrameWork.cpp">
-    </ClCompile>
     <ClCompile Include="Source\GenericMethods.cpp">
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__1.cpp">
@@ -192,8 +190,6 @@
     </ClCompile>
     <ClCompile Include="Source\Il2CppUnresolvedIndirectCallStubs.cpp">
     </ClCompile>
-    <ClCompile Include="Source\Main.cpp">
-    </ClCompile>
     <ClCompile Include="Source\Mono.Security.cpp">
     </ClCompile>
     <ClCompile Include="Source\mscorlib.cpp">
@@ -245,8 +241,6 @@
     <ClCompile Include="Source\System__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\System__3.cpp">
-    </ClCompile>
-    <ClCompile Include="Source\UI.cpp">
     </ClCompile>
     <ClCompile Include="Source\Unity.Addressables.cpp">
     </ClCompile>
@@ -374,8 +368,6 @@
     </ClCompile>
     <ClCompile Include="Source\Assembly-CSharp_CodeGen.c">
     </ClCompile>
-    <ClCompile Include="Source\FrameWork_CodeGen.c">
-    </ClCompile>
     <ClCompile Include="Source\Il2CppGenericAdjustorThunkTable.c">
     </ClCompile>
     <ClCompile Include="Source\Il2CppGenericClassTable.c">
@@ -396,8 +388,6 @@
     </ClCompile>
     <ClCompile Include="Source\Il2CppTypeDefinitions.c">
     </ClCompile>
-    <ClCompile Include="Source\Main_CodeGen.c">
-    </ClCompile>
     <ClCompile Include="Source\Mono.Security_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\mscorlib_CodeGen.c">
@@ -409,8 +399,6 @@
     <ClCompile Include="Source\System.Xml_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\System_CodeGen.c">
-    </ClCompile>
-    <ClCompile Include="Source\UI_CodeGen.c">
     </ClCompile>
     <ClCompile Include="Source\Unity.Addressables_CodeGen.c">
     </ClCompile>

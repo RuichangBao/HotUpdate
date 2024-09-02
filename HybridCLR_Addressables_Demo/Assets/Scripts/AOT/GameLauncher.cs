@@ -179,13 +179,13 @@ namespace AOT
         {
             if (!enableHybridCLR)
                 yield break;
-            Debug.Log("LoadAssemblies start!");
+            Debug.Log("开始加载程序集");
             yield return LoadMetadataForAOTAssemblies();
             yield return LoadGamePlayDependencyAssemblies();
             yield return LoadGamePlayAssemblies();
             yield return _assetManager.AfterAllDllLoaded();
             ExecuteRuntimeInitializeOnLoadMethodAttribute();
-            Debug.Log("LoadAssemblies finish!");
+            Debug.Log("程序集加载完成!");
             yield return null;
         }
 

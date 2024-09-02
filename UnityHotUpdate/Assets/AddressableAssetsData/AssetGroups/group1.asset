@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: group1
   m_Data:
     m_SerializedData: []
-  m_GUID: 0d60cfa16d9bb134682dca750769d294
+  m_GUID: 396911dfc6d650b4f8a895e411681a30
   m_SerializeEntries:
   - m_GUID: a6b9956bbbf47f94aae1babc3dc6c1ed
     m_Address: UIMain
@@ -26,5 +26,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 0ddbb2804ad6ea94da953f3dab389938, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: f74dc2e0b1284c2459291a9afe803bf0, type: 2}
-    - {fileID: 11400000, guid: c216592b1802c404b871d5779c24175a, type: 2}
+    - {fileID: 11400000, guid: b976ee5d70e99044f89d49a81931496a, type: 2}
+    - {fileID: 11400000, guid: e17da8df680ad9840bc943636d41fe48, type: 2}
