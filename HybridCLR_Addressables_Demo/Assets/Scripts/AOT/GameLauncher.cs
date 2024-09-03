@@ -85,14 +85,14 @@ namespace AOT
         private Coroutine _launchCoroutine;
         private byte[] _dllBytes;
 
-        private Dictionary<string, Assembly> _allHotUpdateAssemblies = new();
+        private Dictionary<string, Assembly> _allHotUpdateAssemblies = new Dictionary<string, Assembly>();
 
         ///GamePlay程序集依赖的热更程序集，这些程序集要先于gameplay程序集加载，需要手动填写
         private readonly List<string> _gamePlayDependencyDlls = new List<string>()
         {
         };
 
-        private IAssetManager _assetManager = new AddressableAssetManager();
+        private AddressableAssetManager _assetManager = new AddressableAssetManager();
         private UIVersionUpdate _versionUpdateUI;
 
         public bool enableHybridCLR = true;
@@ -147,10 +147,10 @@ namespace AOT
         {
             if (!_assetManager.HasContentToDownload)
                 yield break;
-            Debug.Log($"VersionUpdate start!");
+            Debug.Log($"版本更新开始!");
             yield return OpenVersionUpdateUI();
             yield return Download();
-            Debug.Log($"VersionUpdate finish!");
+            Debug.Log($"版本更新完成!");
         }
 
         //打开版本更新UI

@@ -15,9 +15,9 @@ namespace GamePlay
 
         public static GameTest Instance => _instance ??= new GameTest();
 
-        private List<HotUpdateClass> _hotUpdateClassList = new();
+        private List<HotUpdateClass> _hotUpdateClassList = new List<HotUpdateClass>();
 
-        private List<HotUpdateStruct> _hotUpdateStructList = new();
+        private List<HotUpdateStruct> _hotUpdateStructList = new List<HotUpdateStruct>();
 
         #region Test RuntimeInitializeOnLoadMethod
 
@@ -69,15 +69,15 @@ namespace GamePlay
                 _hotUpdateStructList.Add(new(i));
             }
 
-            for (int i = 0; i < 5; i++)
-            {
-                Debug.LogError(_hotUpdateClassList[i].i);
-            }
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    Debug.LogError(_hotUpdateClassList[i].i);
+            //}
 
-            for (int i = 0; i < 5; i++)
-            {
-                Debug.LogError(_hotUpdateStructList[i].i);
-            }
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    Debug.LogError(_hotUpdateStructList[i].i);
+            //}
         }
 
         #endregion

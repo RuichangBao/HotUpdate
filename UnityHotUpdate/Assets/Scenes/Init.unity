@@ -407,7 +407,6 @@ GameObject:
   - component: {fileID: 890028693}
   - component: {fileID: 890028692}
   - component: {fileID: 890028695}
-  - component: {fileID: 890028696}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -503,19 +502,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lab: {fileID: 1874179394}
   btn: {fileID: 1116095682}
---- !u!114 &890028696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890028690}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daac8088daae78849ba9f075cccec689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statusText: {fileID: 1874179394}
 --- !u!1 &1116095680
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +956,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 91
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -981,7 +967,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Text
 --- !u!222 &1874179395
 CanvasRenderer:
   m_ObjectHideFlags: 0
