@@ -15,8 +15,28 @@ MonoBehaviour:
   m_GroupName: Content Update
   m_Data:
     m_SerializedData: []
-  m_GUID: 488fb5e5662e83340aca204ca377e9d7
-  m_SerializeEntries: []
+  m_GUID: d31efaaed3783ae4eb4d7dba333694e8
+  m_SerializeEntries:
+  - m_GUID: 5f3497b173d101c4eb08a0f4b065979c
+    m_Address: Assets/HotUpdateDlls/HotUpdateDll/GamePlay.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb3407cbe134c60458e04acd17bb2690
+    m_Address: Assets/HotUpdateDlls/MetaDataDll/Unity.Addressables.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e141d6b5c363de240832815b0257e7b1
+    m_Address: Assets/HotUpdateDlls/MetaDataDll/Unity.ResourceManager.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad0363e90e97c794982c1149fa98f022
+    m_Address: Assets/HotUpdateDlls/MetaDataDll/UnityEngine.CoreModule.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bd8c88330daf27744b9edd695f056cc7, type: 2}
   m_SchemaSet:

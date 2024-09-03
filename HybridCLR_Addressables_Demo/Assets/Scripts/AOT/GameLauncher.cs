@@ -16,18 +16,18 @@ namespace AOT
     public class GameLauncher : MonoBehaviour
     {
         #region Inner Class
-        
+
         [Serializable]
         public class MethodExecutionInfo
         {
             public string assemblyName;
 
             public string typeName;
-            
+
             public string methodName;
-            
+
             public int sequence;
-            
+
             public MethodExecutionInfo(string assemblyName, string typeName, string methodName, int sequence)
             {
                 this.assemblyName = assemblyName;
@@ -68,7 +68,7 @@ namespace AOT
         {
             public List<MethodExecutionInfo> methodExecutionInfos = new List<MethodExecutionInfo>();
         }
-        
+
         #endregion
 
         #region FieldsAndProperties
@@ -81,10 +81,10 @@ namespace AOT
         public const string META_DATA_DLLS_TO_LOAD_PATH = "Assets/HotUpdateDlls/MetaDataDllToLoad.txt";
         public const string RUN_TIME_INITIALIZE_ON_LOAD_METHOD_COLLECTION_PATH = "Assets/HotUpdateDlls/RuntimeInitializeOnLoadMethodCollection.txt";
         public const string META_DATA_DLL_SEPARATOR = "!";
-        
+
         private Coroutine _launchCoroutine;
         private byte[] _dllBytes;
-
+        ///<summary>加载的程序集</summary>
         private Dictionary<string, Assembly> _allHotUpdateAssemblies = new Dictionary<string, Assembly>();
 
         ///GamePlay程序集依赖的热更程序集，这些程序集要先于gameplay程序集加载，需要手动填写
@@ -96,14 +96,14 @@ namespace AOT
         private UIVersionUpdate _versionUpdateUI;
 
         public bool enableHybridCLR = true;
-        
+
         #endregion
 
         #region MainLife
 
         private void Start()
         {
-            if(enableHybridCLR)
+            if (enableHybridCLR)
                 HybridCLROptimizer.OptimizeHybridCLR();
             _launchCoroutine = StartCoroutine(Launch());
         }
@@ -192,39 +192,39 @@ namespace AOT
         //补充元数据
         private IEnumerator LoadMetadataForAOTAssemblies()
         {
-            var aotAssemblies = GetMetaDataDllToLoad();
+            string[] aotAssemblies = GetMetaDataDllToLoad();
             if (aotAssemblies == null)
             {
                 yield break;
             }
-            
-            foreach (var aotDllName in aotAssemblies)
+
+            foreach (string aotDllName in aotAssemblies)
             {
-                if(string.IsNullOrEmpty(aotDllName))
+                if (string.IsNullOrEmpty(aotDllName))
                     continue;
-                var path = $"{META_DATA_DLL_PATH}{aotDllName}.bytes";
-                ReadDllBytes(path);
+                string path = $"{META_DATA_DLL_PATH}{aotDllName}.bytes";
+                ReadDllBytes(path);//读取元数据
                 if (_dllBytes != null)
                 {
-                    var err = HybridCLR.RuntimeApi.LoadMetadataForAOTAssembly(_dllBytes, HomologousImageMode.SuperSet);
+                    LoadImageErrorCode err = HybridCLR.RuntimeApi.LoadMetadataForAOTAssembly(_dllBytes, HomologousImageMode.SuperSet);
                     Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. ret:{err}");
                 }
             }
 
             Debug.Log("LoadMetadataForAOTAssemblies finish!");
         }
-
+        ///<summary>获取元数据</summary>
         private string[] GetMetaDataDllToLoad()
         {
             string[] result = null;
-            var metaDataToLoad = _assetManager.LoadAsset<TextAsset>(META_DATA_DLLS_TO_LOAD_PATH);
+            TextAsset metaDataToLoad = _assetManager.LoadAsset<TextAsset>(META_DATA_DLLS_TO_LOAD_PATH);
             if (metaDataToLoad == null)
             {
-                Debug.LogError($"cant load metaDataText,path:{META_DATA_DLLS_TO_LOAD_PATH}");
+                Debug.LogError($"不能加载元数据，路径:{META_DATA_DLLS_TO_LOAD_PATH}");
             }
             else
             {
-                var text = metaDataToLoad.text;
+                string text = metaDataToLoad.text;
                 result = text.Split(META_DATA_DLL_SEPARATOR);
                 _assetManager.UnloadAsset(metaDataToLoad);
             }
@@ -235,7 +235,7 @@ namespace AOT
         //加载GamePlay依赖的第三方程序集
         private IEnumerator LoadGamePlayDependencyAssemblies()
         {
-            foreach (var dllName in _gamePlayDependencyDlls)
+            foreach (string dllName in _gamePlayDependencyDlls)
             {
                 yield return LoadSingleHotUpdateAssembly(dllName);
             }
@@ -265,14 +265,14 @@ namespace AOT
         /// </summary>
         private void ExecuteRuntimeInitializeOnLoadMethodAttribute()
         {
-            var runtimeInitializeOnLoadMethodCollection = _assetManager.LoadAsset<TextAsset>(RUN_TIME_INITIALIZE_ON_LOAD_METHOD_COLLECTION_PATH);
+            TextAsset runtimeInitializeOnLoadMethodCollection = _assetManager.LoadAsset<TextAsset>(RUN_TIME_INITIALIZE_ON_LOAD_METHOD_COLLECTION_PATH);
             var json = runtimeInitializeOnLoadMethodCollection.text;
             var collection = JsonUtility.FromJson<RuntimeInitializeOnLoadMethodCollection>(json);
             foreach (var methodInfo in collection.methodExecutionInfos)
             {
                 methodInfo.Execute();
             }
-            
+
             Debug.Log("execute RuntimeInitializeOnLoadMethod finish!");
         }
 

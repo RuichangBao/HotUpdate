@@ -69,9 +69,9 @@ MonoBehaviour:
       - m_Id: b58ce8146b3281f42916d2c308134c3c
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: eb46dfd26026b60418889b30d9b7d92a
-        m_Value: D:\HttpServer/[BuildTarget]
+        m_Value: D:\HttpServer/HybridCLR_Addressables_Demo/[BuildTarget]
       - m_Id: d388ccacf8397ea4bab922b24131c94b
-        m_Value: http://127.0.0.1:8080/[BuildTarget]
+        m_Value: http://192.168.3.88:8080/HybridCLR_Addressables_Demo/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 5df9c38d23aed2e4bb0c3d13c7a078f8
       m_Name: BuildTarget

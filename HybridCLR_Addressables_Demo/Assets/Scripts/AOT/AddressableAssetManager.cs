@@ -129,11 +129,8 @@ namespace AOT
 
         public IEnumerator DownloadAssets()
         {
-            for (int i = 0; i < _KeysNeedToDownload.Count; i++)
-            {
-                Debug.LogError("AAAAA:"+ _KeysNeedToDownload[i]);
-            }
             AsyncOperationHandle<long> downloadSizeOp = Addressables.GetDownloadSizeAsync((IEnumerable)_KeysNeedToDownload);
+            Debug.Log($"下载大小:{downloadSizeOp.Result / (1024f * 1024f)}MB");
             yield return downloadSizeOp;
             Debug.Log($"下载大小:{downloadSizeOp.Result / (1024f * 1024f)}MB");
 
