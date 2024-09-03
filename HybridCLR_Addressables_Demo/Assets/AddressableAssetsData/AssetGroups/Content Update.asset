@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Content Update
   m_Data:
     m_SerializedData: []
-  m_GUID: d31efaaed3783ae4eb4d7dba333694e8
+  m_GUID: bb6512b41c7718240bf0b4e825fd2661
   m_SerializeEntries:
   - m_GUID: 5f3497b173d101c4eb08a0f4b065979c
     m_Address: Assets/HotUpdateDlls/HotUpdateDll/GamePlay.dll.bytes

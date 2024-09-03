@@ -140,10 +140,6 @@ namespace AOT
                 if (_KeysNeedToDownload.Count > 0)
                 {
                     Debug.Log($"需要下载数量{_KeysNeedToDownload.Count}");
-                    for (int i = 0; i < _KeysNeedToDownload.Count; i++)
-                    {
-                        Debug.Log(_KeysNeedToDownload[i]);
-                    }
                 }
                 _downloadOP = Addressables.DownloadDependenciesAsync((IEnumerable)_KeysNeedToDownload, Addressables.MergeMode.Union, false);
 
