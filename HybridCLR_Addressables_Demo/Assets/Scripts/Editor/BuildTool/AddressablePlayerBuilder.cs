@@ -37,10 +37,10 @@ namespace BuildTool
             HybridHotUpdateEditorHelper.BuildHotUpdateDlls(false);
             UpdatePreviousPlayer();
         }
-        [MenuItem("打包/Addressable资源")]
+        [MenuItem("打包/测试")]
         private static void BuildAddressable()
         {
-            
+            HybridHotUpdateEditorHelper.Test();
         }
         private static void BuildContentAndPlayer()
         {

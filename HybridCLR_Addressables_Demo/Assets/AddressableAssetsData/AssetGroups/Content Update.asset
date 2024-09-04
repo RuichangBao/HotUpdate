@@ -15,7 +15,7 @@ MonoBehaviour:
   m_GroupName: Content Update
   m_Data:
     m_SerializedData: []
-  m_GUID: e13fdff8f6074844bb6f0c1be064a741
+  m_GUID: fda0ff08bb1a2044289d0900a4c1a6d6
   m_SerializeEntries:
   - m_GUID: ce1f60ee128fbf646aae196d86974fdc
     m_Address: Assets/HotUpdateDlls/MetaDataDllToLoad.txt

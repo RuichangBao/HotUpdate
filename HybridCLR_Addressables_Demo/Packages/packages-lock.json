@@ -1,11 +1,10 @@
 {
   "dependencies": {
     "com.code-philosophy.hybridclr": {
-      "version": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
+      "version": "file:com.code-philosophy.hybridclr@59bc259cc8",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "59bc259cc88898425620535d282192503ba99399"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.addressables": {
       "version": "file:com.unity.addressables@1.21.21",
@@ -116,7 +115,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "3.0.6",
+      "version": "3.0.9",
       "depth": 0,
       "source": "registry",
       "dependencies": {

@@ -42,10 +42,10 @@ namespace BuildTool
             var controller = new InstallerController();
             if (!controller.HasInstalledHybridCLR())
                 controller.InstallDefaultHybridCLR();
-            
+
             //执行HybridCLR
             PrebuildCommand.GenerateAll();
-            
+
             //如果是更新，则检查热更代码中是否引用了被裁减的AOT代码
             if (!isBuildPlayer)
                 if (!CheckAccessMissingMetadata())
@@ -53,15 +53,18 @@ namespace BuildTool
             //拷贝dll
             CopyHotUpdateDll();
             CopyMetaDataDll();
-            
+
             //如果是发包，则拷贝AOT dll
             if (isBuildPlayer)
                 CopyAotDllsForStripCheck();
-            
+
             //收集RuntimeInitializeOnLoadMethod
             CollectRuntimeInitializeOnLoadMethod();
         }
-
+        public static void Test()
+        {
+            CopyHotUpdateDll();
+        }
         /// <summary>
         /// 设置是否开启热更新
         /// </summary>
@@ -89,28 +92,29 @@ namespace BuildTool
             EditorSceneManager.CloseScene(gameLauncherScene, false);
             HybridCLR.Editor.SettingsUtil.Enable = isEnable;
         }
-
+        ///<summary>拷贝热更dll</summary>
         private static void CopyHotUpdateDll()
         {
-            var assemblies = SettingsUtil.HotUpdateAssemblyNamesExcludePreserved;
-            var dir = new DirectoryInfo(HotUpdateDllPath);
-            var files = dir.GetFiles();
-            var destDir = HotUpdateDestinationPath;
+            List<string> assemblies = SettingsUtil.HotUpdateAssemblyNamesExcludePreserved;
+            DirectoryInfo dir = new DirectoryInfo(HotUpdateDllPath);
+            FileInfo[] files = dir.GetFiles();
+            string destDir = HotUpdateDestinationPath;
             if (Directory.Exists(destDir))
                 Directory.Delete(destDir, true);
             Directory.CreateDirectory(destDir);
-            foreach (var file in files)
+            foreach (FileInfo file in files)
             {
                 if (file.Extension == ".dll" && assemblies.Contains(file.Name.Substring(0, file.Name.Length - 4)))
                 {
-                    var desPath = destDir + file.Name + ".bytes";
+                    string desPath = destDir + file.Name + ".bytes";
                     file.CopyTo(desPath, true);
+                    Debug.Log("复制热更dll" + desPath);
                 }
             }
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            Debug.Log("copy hot update dlls success!");
+            Debug.Log("复制热更dll成功!");
         }
 
         private static void CopyMetaDataDll()
