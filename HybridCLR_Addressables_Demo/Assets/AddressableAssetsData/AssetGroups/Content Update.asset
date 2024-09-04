@@ -15,8 +15,18 @@ MonoBehaviour:
   m_GroupName: Content Update
   m_Data:
     m_SerializedData: []
-  m_GUID: bb6512b41c7718240bf0b4e825fd2661
+  m_GUID: e13fdff8f6074844bb6f0c1be064a741
   m_SerializeEntries:
+  - m_GUID: ce1f60ee128fbf646aae196d86974fdc
+    m_Address: Assets/HotUpdateDlls/MetaDataDllToLoad.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bfb2625f555e4e347befcb46b751c300
+    m_Address: Assets/HotUpdateDlls/RuntimeInitializeOnLoadMethodCollection.txt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5f3497b173d101c4eb08a0f4b065979c
     m_Address: Assets/HotUpdateDlls/HotUpdateDll/GamePlay.dll.bytes
     m_ReadOnly: 0
