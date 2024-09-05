@@ -52,6 +52,8 @@
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__11.cpp">
     </ClCompile>
+    <ClCompile Include="Source\GenericMethods__12.cpp">
+    </ClCompile>
     <ClCompile Include="Source\GenericMethods__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__3.cpp">
@@ -164,6 +166,12 @@
     </ClCompile>
     <ClCompile Include="Source\Generics__51.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Generics__52.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__53.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__54.cpp">
+    </ClCompile>
     <ClCompile Include="Source\Generics__6.cpp">
     </ClCompile>
     <ClCompile Include="Source\Generics__7.cpp">
@@ -232,6 +240,8 @@
     </ClCompile>
     <ClCompile Include="Source\Unity.Addressables.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables__1.cpp">
+    </ClCompile>
     <ClCompile Include="Source\Unity.ResourceManager.cpp">
     </ClCompile>
     <ClCompile Include="Source\Unity.TextMeshPro.cpp">
@@ -261,6 +271,8 @@
     <ClCompile Include="Source\UnityEngine.CoreModule__1.cpp">
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.CoreModule__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.CoreModule__3.cpp">
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.cpp">
     </ClCompile>
@@ -2342,8 +2354,6 @@
     </ClCompile>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\generated\MethodBridge.cpp">
     </ClCompile>
-    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\generated\ReversePInvokeMethodStub.cpp">
-    </ClCompile>
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\generated\UnityVersion.h">
     </ClInclude>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\Il2CppCompatibleDef.cpp">
@@ -2420,6 +2430,10 @@
     </ClCompile>
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataModule.h">
     </ClInclude>
+    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataPool.cpp">
+    </ClCompile>
+    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataPool.h">
+    </ClInclude>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataUtil.cpp">
     </ClCompile>
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataUtil.h">
@@ -2428,11 +2442,17 @@
     </ClCompile>
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\Opcodes.h">
     </ClInclude>
+    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\PDBImage.cpp">
+    </ClCompile>
+    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\PDBImage.h">
+    </ClInclude>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImage.cpp">
     </ClCompile>
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImage.h">
     </ClInclude>
-    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\ReversePInvokeMethodStub.h">
+    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImageBase.cpp">
+    </ClCompile>
+    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImageBase.h">
     </ClInclude>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\SuperSetAOTHomologousImage.cpp">
     </ClCompile>
@@ -3763,6 +3783,8 @@
     <ClInclude Include="IL2CPP\libil2cpp\utils\Il2CppHashMap.h">
     </ClInclude>
     <ClInclude Include="IL2CPP\libil2cpp\utils\Il2CppHashSet.h">
+    </ClInclude>
+    <ClInclude Include="IL2CPP\libil2cpp\utils\InitOnce.h">
     </ClInclude>
     <ClInclude Include="IL2CPP\libil2cpp\utils\KeyWrapper.h">
     </ClInclude>
