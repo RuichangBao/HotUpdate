@@ -52,6 +52,8 @@
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__11.cpp">
     </ClCompile>
+    <ClCompile Include="Source\GenericMethods__12.cpp">
+    </ClCompile>
     <ClCompile Include="Source\GenericMethods__2.cpp">
     </ClCompile>
     <ClCompile Include="Source\GenericMethods__3.cpp">
@@ -164,6 +166,12 @@
     </ClCompile>
     <ClCompile Include="Source\Generics__51.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Generics__52.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__53.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\Generics__54.cpp">
+    </ClCompile>
     <ClCompile Include="Source\Generics__6.cpp">
     </ClCompile>
     <ClCompile Include="Source\Generics__7.cpp">
@@ -232,6 +240,8 @@
     </ClCompile>
     <ClCompile Include="Source\Unity.Addressables.cpp">
     </ClCompile>
+    <ClCompile Include="Source\Unity.Addressables__1.cpp">
+    </ClCompile>
     <ClCompile Include="Source\Unity.ResourceManager.cpp">
     </ClCompile>
     <ClCompile Include="Source\Unity.TextMeshPro.cpp">
@@ -261,6 +271,8 @@
     <ClCompile Include="Source\UnityEngine.CoreModule__1.cpp">
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.CoreModule__2.cpp">
+    </ClCompile>
+    <ClCompile Include="Source\UnityEngine.CoreModule__3.cpp">
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.cpp">
     </ClCompile>

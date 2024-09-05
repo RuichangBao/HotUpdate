@@ -15,35 +15,10 @@ MonoBehaviour:
   m_GroupName: Content Update
   m_Data:
     m_SerializedData: []
-  m_GUID: fda0ff08bb1a2044289d0900a4c1a6d6
+  m_GUID: cff003fcd7284b34cad2a851837fc8fb
   m_SerializeEntries:
-  - m_GUID: ce1f60ee128fbf646aae196d86974fdc
-    m_Address: Assets/HotUpdateDlls/MetaDataDllToLoad.txt
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bfb2625f555e4e347befcb46b751c300
-    m_Address: Assets/HotUpdateDlls/RuntimeInitializeOnLoadMethodCollection.txt
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5f3497b173d101c4eb08a0f4b065979c
-    m_Address: Assets/HotUpdateDlls/HotUpdateDll/GamePlay.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: eb3407cbe134c60458e04acd17bb2690
-    m_Address: Assets/HotUpdateDlls/MetaDataDll/Unity.Addressables.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e141d6b5c363de240832815b0257e7b1
-    m_Address: Assets/HotUpdateDlls/MetaDataDll/Unity.ResourceManager.dll.bytes
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ad0363e90e97c794982c1149fa98f022
-    m_Address: Assets/HotUpdateDlls/MetaDataDll/UnityEngine.CoreModule.dll.bytes
+  - m_GUID: 22e2978c367efdf40a344fe2275aeeff
+    m_Address: Assets/Prefabs/TestPrefab.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
