@@ -71,14 +71,14 @@ namespace BuildTool
         private static void UpdatePreviousPlayer()
         {
             DeleteContentUpdateGroup();
-            var path = ContentUpdateScript.GetContentStateDataPath(false);
+            string path = ContentUpdateScript.GetContentStateDataPath(false);
             if (string.IsNullOrEmpty(path) || !File.Exists(path))
             {
                 Debug.LogError($"cant find the .bin file! path:{path}");
                 return;
             }
-            
-            var modifiedEntries = ContentUpdateScript.GatherModifiedEntries(DefaultSettings, path);
+
+            List<AddressableAssetEntry> modifiedEntries = ContentUpdateScript.GatherModifiedEntries(DefaultSettings, path);
             ContentUpdateScript.CreateContentUpdateGroup(DefaultSettings, modifiedEntries, CONTENT_UPDATE_GROUP_NAME);
             var schema = ContentUpdateGroup.GetSchema<BundledAssetGroupSchema>();
             //设置group的重试次数和超时时间，如果不设置，可能出现下载卡住的情况
