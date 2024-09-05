@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
@@ -19,7 +18,7 @@ namespace AOT
         [Serializable]
         private class DownloadContent
         {
-            public List<string> catalogs = new List<string>();
+            public List<string> catalogs = new();
         }
 
         #endregion
@@ -29,10 +28,10 @@ namespace AOT
         //记录在playerPres里的需要下载的catalogs的ID
         const string DOWNLOAD_CATALOGS_ID = "DownloadCatalogs";
 
-        private List<object> _KeysNeedToDownload = new List<object>();
+        private List<object> _KeysNeedToDownload = new();
 
         //此对象里保存了需要下载的catalog，每次获取新的catalog会将此对象保存到手机上，如果在下载的过程中关闭了游戏，下次打开还能拿到catalog继续下载
-        private DownloadContent _downloadContent = new DownloadContent();
+        private DownloadContent _downloadContent = new();
 
         private AsyncOperationHandle _downloadOP;
 
@@ -60,28 +59,21 @@ namespace AOT
 
         public IEnumerator CheckUpdate()
         {
-            //检查可更新内容目录是否有更新
-            AsyncOperationHandle<List<string>> checkUpdateOP = Addressables.CheckForCatalogUpdates(false);
+            var checkUpdateOP = Addressables.CheckForCatalogUpdates(false);
             yield return checkUpdateOP;
             if (checkUpdateOP.Status == AsyncOperationStatus.Succeeded)
             {
                 _downloadContent.catalogs = checkUpdateOP.Result;
                 if (HasContentToDownload)
                 {
-                    Debug.Log($"目录文件需要更新,数量{_downloadContent.catalogs.Count}");
+                    Debug.Log("new version on server");
                     //说明服务器上有新的资源，记录要下载的catalog值在playerprefs中,如果下载的过程中被打断，下次打开游戏使用该值还能继续下载
-                    for (int i = 0,length = _downloadContent.catalogs.Count; i < length; i++)
-                    {
-                        Debug.Log(_downloadContent.catalogs[i]);
-                    }
-                    string jsonStr = JsonUtility.ToJson(_downloadContent);
-                    Debug.Log($"下载文件{jsonStr}");
+                    var jsonStr = JsonUtility.ToJson(_downloadContent);
                     PlayerPrefs.SetString(DOWNLOAD_CATALOGS_ID, jsonStr);
                     PlayerPrefs.Save();
                 }
                 else
                 {
-                    Debug.Log("目录文件不需要更新");
                     if (PlayerPrefs.HasKey(DOWNLOAD_CATALOGS_ID))
                     {
                         //上一次的更新还没下载完
@@ -98,8 +90,7 @@ namespace AOT
 
                 if (HasContentToDownload)
                 {
-                    //更新目录文件
-                    AsyncOperationHandle<List<IResourceLocator>> updateCatalogOP = Addressables.UpdateCatalogs(_downloadContent.catalogs, false);
+                    var updateCatalogOP = Addressables.UpdateCatalogs(_downloadContent.catalogs, false);
                     yield return updateCatalogOP;
                     if (updateCatalogOP.Status == AsyncOperationStatus.Succeeded)
                     {
@@ -119,7 +110,7 @@ namespace AOT
             }
             else
             {
-                Debug.LogError($"检查更新失败！异常:{checkUpdateOP.OperationException.Message}");
+                Debug.LogError($"CheckUpdate failed!exception:{checkUpdateOP.OperationException.Message}");
             }
 
             Addressables.Release(checkUpdateOP);
@@ -129,26 +120,25 @@ namespace AOT
 
         public IEnumerator DownloadAssets()
         {
-            AsyncOperationHandle<long> downloadSizeOp = Addressables.GetDownloadSizeAsync((IEnumerable)_KeysNeedToDownload);
-            Debug.Log($"下载大小:{downloadSizeOp.Result / (1024f * 1024f)}MB");
+            var downloadSizeOp = Addressables.GetDownloadSizeAsync((IEnumerable)_KeysNeedToDownload);
             yield return downloadSizeOp;
-            Debug.Log($"下载大小:{downloadSizeOp.Result / (1024f * 1024f)}MB");
+            Debug.Log($"download size:{downloadSizeOp.Result / (1024f * 1024f)}MB");
 
             if (downloadSizeOp.Result > 0)
             {
                 Addressables.Release(downloadSizeOp);
-                if (_KeysNeedToDownload.Count > 0)
-                {
-                    Debug.Log($"需要下载数量{_KeysNeedToDownload.Count}");
-                }
-                _downloadOP = Addressables.DownloadDependenciesAsync((IEnumerable)_KeysNeedToDownload, Addressables.MergeMode.Union, false);
+
+                _downloadOP =
+                    Addressables.DownloadDependenciesAsync((IEnumerable)_KeysNeedToDownload,
+                        Addressables.MergeMode.Union, false);
 
                 yield return _downloadOP;
 
                 if (_downloadOP.Status == AsyncOperationStatus.Succeeded)
-                    Debug.Log($"下载完成!");
+                    Debug.Log($"download finish!");
                 else
-                    Debug.LogError($"下载失败! 异常:{_downloadOP.OperationException.Message} \r\n {_downloadOP.OperationException.StackTrace}");
+                    Debug.LogError(
+                        $"Download Failed! exception:{_downloadOP.OperationException.Message} \r\n {_downloadOP.OperationException.StackTrace}");
 
                 Addressables.Release(_downloadOP);
             }
@@ -194,7 +184,7 @@ namespace AOT
         /// <returns></returns>
         private IEnumerator ReloadAddressableCatalog()
         {
-            AsyncOperationHandle<IResourceLocator> op = Addressables.LoadContentCatalogAsync($"{Addressables.RuntimePath}/catalog.json");
+            var op = Addressables.LoadContentCatalogAsync($"{Addressables.RuntimePath}/catalog.json");
             yield return op;
             if (op.Status != AsyncOperationStatus.Succeeded)
             {

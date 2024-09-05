@@ -22,7 +22,7 @@ namespace BuildTool
         private static AddressableAssetSettings DefaultSettings => AddressableAssetSettingsDefaultObject.Settings;
         
         private static AddressableAssetGroup ContentUpdateGroup => DefaultSettings.groups.Find(g => g.name.Contains(CONTENT_UPDATE_GROUP_NAME));
-        
+
         [MenuItem("打包/完整包")]
         private static void BuildContentAndPlayerWithHybridCLR()
         {
@@ -42,6 +42,7 @@ namespace BuildTool
         {
             HybridHotUpdateEditorHelper.Test();
         }
+
         private static void BuildContentAndPlayer()
         {
             BuildAddressableContent();
@@ -71,14 +72,14 @@ namespace BuildTool
         private static void UpdatePreviousPlayer()
         {
             DeleteContentUpdateGroup();
-            string path = ContentUpdateScript.GetContentStateDataPath(false);
+            var path = ContentUpdateScript.GetContentStateDataPath(false);
             if (string.IsNullOrEmpty(path) || !File.Exists(path))
             {
                 Debug.LogError($"cant find the .bin file! path:{path}");
                 return;
             }
-
-            List<AddressableAssetEntry> modifiedEntries = ContentUpdateScript.GatherModifiedEntries(DefaultSettings, path);
+            
+            var modifiedEntries = ContentUpdateScript.GatherModifiedEntries(DefaultSettings, path);
             ContentUpdateScript.CreateContentUpdateGroup(DefaultSettings, modifiedEntries, CONTENT_UPDATE_GROUP_NAME);
             var schema = ContentUpdateGroup.GetSchema<BundledAssetGroupSchema>();
             //设置group的重试次数和超时时间，如果不设置，可能出现下载卡住的情况

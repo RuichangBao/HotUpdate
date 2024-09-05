@@ -15,22 +15,22 @@ namespace GamePlay
 
         public static GameTest Instance => _instance ??= new GameTest();
 
-        private List<HotUpdateClass> _hotUpdateClassList = new List<HotUpdateClass>();
+        private List<HotUpdateClass> _hotUpdateClassList = new();
 
-        private List<HotUpdateStruct> _hotUpdateStructList = new List<HotUpdateStruct>();
+        private List<HotUpdateStruct> _hotUpdateStructList = new();
 
         #region Test RuntimeInitializeOnLoadMethod
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void TestRuntimeInitialize1()
         {
-            Debug.LogError("当第一个场景的对象加载到内存中时，在调用Awake之前调用回调。");
+            Debug.LogError("TestRuntimeInitialize1");
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
         private static void TestRuntimeInitialize2()
         {
-            Debug.LogError("在加载所有程序集和初始化预加载资源时调用回调。此时，第一个场景的对象还没有加载。");
+            Debug.LogError("TestRuntimeInitialize2");
         }
 
         #endregion
@@ -69,15 +69,15 @@ namespace GamePlay
                 _hotUpdateStructList.Add(new(i));
             }
 
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    Debug.LogError(_hotUpdateClassList[i].i);
-            //}
+            for (int i = 0; i < 5; i++)
+            {
+                Debug.LogError(_hotUpdateClassList[i].i);
+            }
 
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    Debug.LogError(_hotUpdateStructList[i].i);
-            //}
+            for (int i = 0; i < 5; i++)
+            {
+                Debug.LogError(_hotUpdateStructList[i].i);
+            }
         }
 
         #endregion
@@ -117,7 +117,7 @@ namespace GamePlay
         
         public void Test()
         {
-            TestGenericType();
+            //TestGenericType();
             TestPrefab();
             TestScriptableObject();
         }

@@ -15,10 +15,10 @@ MonoBehaviour:
   m_GroupName: Content Update
   m_Data:
     m_SerializedData: []
-  m_GUID: cff003fcd7284b34cad2a851837fc8fb
+  m_GUID: 413b5ab0089f90a4ea845433f1a6a726
   m_SerializeEntries:
-  - m_GUID: 22e2978c367efdf40a344fe2275aeeff
-    m_Address: Assets/Prefabs/TestPrefab.prefab
+  - m_GUID: 0b83412aa313fe943bfa77d72827e0bd
+    m_Address: Assets/Scenes/GameScenes/StartScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -26,5 +26,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: bd8c88330daf27744b9edd695f056cc7, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 14da262255807e845bc3da4cbc9cef8c, type: 2}
-    - {fileID: 11400000, guid: b64371dc8387f8d4083a0a66b4dcf657, type: 2}
+    - {fileID: 11400000, guid: 5ae1b9ab26e7d8b4b9bfb2fd53c6f234, type: 2}
+    - {fileID: 11400000, guid: 22f62fc8afe01b04cad769db97435644, type: 2}

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using AOT;
 using HybridCLR.Editor;
@@ -42,10 +43,10 @@ namespace BuildTool
             var controller = new InstallerController();
             if (!controller.HasInstalledHybridCLR())
                 controller.InstallDefaultHybridCLR();
-
+            
             //执行HybridCLR
             PrebuildCommand.GenerateAll();
-
+            
             //如果是更新，则检查热更代码中是否引用了被裁减的AOT代码
             if (!isBuildPlayer)
                 if (!CheckAccessMissingMetadata())
@@ -53,19 +54,15 @@ namespace BuildTool
             //拷贝dll
             CopyHotUpdateDll();
             CopyMetaDataDll();
-
+            
             //如果是发包，则拷贝AOT dll
             if (isBuildPlayer)
                 CopyAotDllsForStripCheck();
-
+            
             //收集RuntimeInitializeOnLoadMethod
             CollectRuntimeInitializeOnLoadMethod();
         }
-        public static void Test()
-        {
-            List<string> assemblys = SettingsUtil.HotUpdateAssemblyNamesExcludePreserved;
-            CopyHotUpdateDll();
-        }
+
         /// <summary>
         /// 设置是否开启热更新
         /// </summary>
@@ -93,37 +90,36 @@ namespace BuildTool
             EditorSceneManager.CloseScene(gameLauncherScene, false);
             HybridCLR.Editor.SettingsUtil.Enable = isEnable;
         }
-        ///<summary>拷贝热更dll</summary>
+
         private static void CopyHotUpdateDll()
         {
-            List<string> assemblies = SettingsUtil.HotUpdateAssemblyNamesExcludePreserved;
-            DirectoryInfo dir = new DirectoryInfo(HotUpdateDllPath);
-            FileInfo[] files = dir.GetFiles();
-            string destDir = HotUpdateDestinationPath;
+            var assemblies = SettingsUtil.HotUpdateAssemblyNamesExcludePreserved;
+            var dir = new DirectoryInfo(HotUpdateDllPath);
+            var files = dir.GetFiles();
+            var destDir = HotUpdateDestinationPath;
             if (Directory.Exists(destDir))
                 Directory.Delete(destDir, true);
             Directory.CreateDirectory(destDir);
-            foreach (FileInfo file in files)
+            foreach (var file in files)
             {
                 if (file.Extension == ".dll" && assemblies.Contains(file.Name.Substring(0, file.Name.Length - 4)))
                 {
-                    string desPath = destDir + file.Name + ".bytes";
+                    var desPath = destDir + file.Name + ".bytes";
                     file.CopyTo(desPath, true);
-                    Debug.Log("复制热更dll" + desPath);
                 }
             }
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            Debug.Log("复制热更dll成功!");
+            Debug.Log("copy hot update dlls success!");
         }
 
         private static void CopyMetaDataDll()
         {
             List<string> assemblies = GetMetaDataDllList();
-            DirectoryInfo dir = new DirectoryInfo(MetaDataDLLPath);
-            FileInfo[] files = dir.GetFiles();
-            string destDir = MetaDataDestinationPath;
+            var dir = new DirectoryInfo(MetaDataDLLPath);
+            var files = dir.GetFiles();
+            var destDir = MetaDataDestinationPath;
             if (Directory.Exists(destDir))
                 Directory.Delete(destDir, true);
             Directory.CreateDirectory(destDir);
@@ -203,11 +199,11 @@ namespace BuildTool
         //https://docs.unity.cn/2023.2/Documentation/Manual/DomainReloading.html
         private static List<string> GetMetaDataDllList()
         {
-            string aotGenericRefPath = AOTGenericReferencesPath;
+            var aotGenericRefPath = AOTGenericReferencesPath;
             List<string> result = new List<string>();
             using (StreamReader reader = new StreamReader(aotGenericRefPath))
             {
-                string lineStr = "";
+                var lineStr = "";
                 while (!reader.ReadLine().Contains("new List<string>"))
                 {
                 }
@@ -218,7 +214,7 @@ namespace BuildTool
                     lineStr = reader.ReadLine().Replace("\t", "");
                     if (lineStr.Contains("};"))
                         break;
-                    string dllName = lineStr.Substring(1, lineStr.Length - 3);
+                    var dllName = lineStr.Substring(1, lineStr.Length - 3);
                     result.Add(dllName);
                 }
             }
@@ -228,12 +224,12 @@ namespace BuildTool
 
         private static void CollectRuntimeInitializeOnLoadMethod()
         {
-            RuntimeInitializeOnLoadMethodCollection runtimeInitializeOnLoadMethodCollection = new RuntimeInitializeOnLoadMethodCollection();
-            List<string> hotUpdateAssemblies = SettingsUtil.HotUpdateAssemblyNamesExcludePreserved;
-            Type runtimeInitializedAttributeType = typeof(RuntimeInitializeOnLoadMethodAttribute);
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            RuntimeInitializeOnLoadMethodCollection runtimeInitializeOnLoadMethodCollection = new();
+            var hotUpdateAssemblies = SettingsUtil.HotUpdateAssemblyNamesExcludePreserved;
+            var runtimeInitializedAttributeType = typeof(RuntimeInitializeOnLoadMethodAttribute);
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                string assemblyName = assembly.GetName().Name;
+                var assemblyName = assembly.GetName().Name;
                 if (!hotUpdateAssemblies.Contains(assemblyName))
                 {
                     continue;
@@ -251,8 +247,8 @@ namespace BuildTool
                                 RuntimeInitializeOnLoadMethodAttribute;
                         if (attribute == null)
                             continue;
-                        int sequence = (int)attribute.loadType;
-                        MethodExecutionInfo methodInfo = new MethodExecutionInfo(assemblyName, type.FullName, method.Name, sequence);
+                        var sequence = (int)attribute.loadType;
+                        var methodInfo = new MethodExecutionInfo(assemblyName, type.FullName, method.Name, sequence);
                         runtimeInitializeOnLoadMethodCollection.methodExecutionInfos.Add(methodInfo);
                     }
                 }
@@ -271,6 +267,28 @@ namespace BuildTool
             File.WriteAllText(RUN_TIME_INITIALIZE_ON_LOAD_METHOD_COLLECTION_PATH, json, Encoding.UTF8);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+        }
+        public static void Test()
+        {
+            string path = $"{HotUpdateDestinationPath}GamePlay.dll.bytes";
+            Debug.Log(path);
+            string md5 = GetMD5Hash(path);
+            Debug.Log(md5);
+        }
+
+        public static string GetMD5Hash(string filePath)
+        {
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException("The specified file does not exist.");
+
+            using (var md5 = MD5.Create())
+            {
+                using (var stream = File.OpenRead(filePath))
+                {
+                    byte[] hash = md5.ComputeHash(stream);
+                    return BitConverter.ToString(hash).Replace("-", "").ToUpperInvariant();
+                }
+            }
         }
     }
 }
