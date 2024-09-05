@@ -553,9 +553,6 @@
     <ClCompile Include="Source\GenericMethods__11.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GenericMethods__12.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GenericMethods__2.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -724,15 +721,6 @@
     <ClCompile Include="Source\Generics__51.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Generics__52.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__53.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Generics__54.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Generics__6.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -835,9 +823,6 @@
     <ClCompile Include="Source\Unity.Addressables.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Unity.Addressables__1.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Unity.ResourceManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -881,9 +866,6 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.CoreModule__2.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\UnityEngine.CoreModule__3.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\UnityEngine.cpp">
@@ -4006,6 +3988,9 @@
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\generated\MethodBridge.cpp">
       <Filter>IL2CPP\libil2cpp\hybridclr\generated</Filter>
     </ClCompile>
+    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\generated\ReversePInvokeMethodStub.cpp">
+      <Filter>IL2CPP\libil2cpp\hybridclr\generated</Filter>
+    </ClCompile>
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\generated\UnityVersion.h">
       <Filter>IL2CPP\libil2cpp\hybridclr\generated</Filter>
     </ClInclude>
@@ -4120,12 +4105,6 @@
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataModule.h">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClInclude>
-    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataPool.cpp">
-      <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
-    </ClCompile>
-    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataPool.h">
-      <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
-    </ClInclude>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\MetadataUtil.cpp">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClCompile>
@@ -4138,22 +4117,13 @@
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\Opcodes.h">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClInclude>
-    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\PDBImage.cpp">
-      <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
-    </ClCompile>
-    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\PDBImage.h">
-      <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
-    </ClInclude>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImage.cpp">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClCompile>
     <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImage.h">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClInclude>
-    <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImageBase.cpp">
-      <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
-    </ClCompile>
-    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\RawImageBase.h">
+    <ClInclude Include="IL2CPP\libil2cpp\hybridclr\metadata\ReversePInvokeMethodStub.h">
       <Filter>IL2CPP\libil2cpp\hybridclr\metadata</Filter>
     </ClInclude>
     <ClCompile Include="IL2CPP\libil2cpp\hybridclr\metadata\SuperSetAOTHomologousImage.cpp">
@@ -6149,9 +6119,6 @@
       <Filter>IL2CPP\libil2cpp\utils</Filter>
     </ClInclude>
     <ClInclude Include="IL2CPP\libil2cpp\utils\Il2CppHashSet.h">
-      <Filter>IL2CPP\libil2cpp\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="IL2CPP\libil2cpp\utils\InitOnce.h">
       <Filter>IL2CPP\libil2cpp\utils</Filter>
     </ClInclude>
     <ClInclude Include="IL2CPP\libil2cpp\utils\KeyWrapper.h">

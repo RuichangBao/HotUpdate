@@ -70,7 +70,7 @@ namespace transform
 #endif
 
 #define CreateIR(varName, typeName) IR##typeName* varName = pool.AllocIR<IR##typeName>(); varName->type = HiOpcodeEnum::typeName;
-#define CreateAddIR(varName, typeName) IR##typeName* varName = pool.AllocIR<IR##typeName>(); varName->type = HiOpcodeEnum::typeName; curbb->insts.push_back(varName); if (ir2offsetMap) { ir2offsetMap->add(varName, ipOffset); }
+#define CreateAddIR(varName, typeName) IR##typeName* varName = pool.AllocIR<IR##typeName>(); varName->type = HiOpcodeEnum::typeName; curbb->insts.push_back(varName);
 
 	enum class LocationDescType
 	{
@@ -97,11 +97,13 @@ namespace transform
 		int32_t size;
 	};
 
+
+
 	struct FlowInfo
 	{
 		uint32_t curStackSize;
 		uint32_t offset;
-		il2cpp::utils::dynamic_array<EvalStackVarInfo> evalStack;
+		std::vector<EvalStackVarInfo> evalStack;
 	};
 
 	const int32_t MAX_STACK_SIZE = (2 << 16) - 1;
@@ -111,12 +113,12 @@ namespace transform
 	int32_t GetSizeByReduceType(EvalStackReduceDataType type);
 
 	template<typename T>
-	void AllocResolvedData(il2cpp::utils::dynamic_array<uint64_t>& resolvedDatas, int32_t size, int32_t& index, T*& buf)
+	void AllocResolvedData(std::vector<uint64_t>& resolvedDatas, int32_t size, int32_t& index, T*& buf)
 	{
 		if (size > 0)
 		{
 			int32_t oldSize = index = (int32_t)resolvedDatas.size();
-			resolvedDatas.resize_initialized(oldSize + size);
+			resolvedDatas.resize(oldSize + size);
 			buf = (T*)&resolvedDatas[oldSize];
 		}
 		else
@@ -150,9 +152,6 @@ namespace transform
 
 	HiOpcodeEnum CalcGetMdArrElementVarVarOpcode(const Il2CppType* type);
 
-
-	typedef Il2CppHashMap<IRCommon*, uint32_t, il2cpp::utils::PointerHash<IRCommon>> IR2OffsetMap;
-
 	struct TransformContext
 	{
 		metadata::Image* image;
@@ -173,7 +172,7 @@ namespace transform
 		LocVarInfo* locals;
 		EvalStackVarInfo* evalStack;
 		int32_t evalStackBaseOffset;
-		il2cpp::utils::dynamic_array<uint64_t>& resolveDatas;
+		std::vector<uint64_t>& resolveDatas;
 		Il2CppHashMap<uint32_t, uint32_t, il2cpp::utils::PassThroughHash<uint32_t>>& token2DataIdxs;
 		Il2CppHashMap<const void*, uint32_t, il2cpp::utils::PassThroughHash<const void*>>& ptr2DataIdxs;
 		std::vector<int32_t*>& relocationOffsets;
@@ -194,8 +193,6 @@ namespace transform
 		int32_t& brOffset;
 
 		const MethodInfo*& shareMethod;
-		uint32_t& ipOffset;
-		IR2OffsetMap* ir2offsetMap;
 
 		static void InitializeInstinctHandlers();
 
@@ -431,10 +428,6 @@ namespace transform
 		{
 			IL2CPP_ASSERT(ir->type != HiOpcodeEnum::None);
 			curbb->insts.push_back(ir);
-			if (ir2offsetMap)
-			{
-				ir2offsetMap->insert({ ir, ipOffset });
-			}
 		}
 
 		void AddInst_ldarg(int32_t argIdx)

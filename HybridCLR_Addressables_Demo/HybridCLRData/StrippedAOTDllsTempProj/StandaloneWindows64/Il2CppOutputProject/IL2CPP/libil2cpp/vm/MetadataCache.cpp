@@ -826,6 +826,10 @@ static bool GenericInstancesMatch(const MethodInfo* method, const MethodInfo* ma
 
 Il2CppMethodPointer il2cpp::vm::MetadataCache::GetReversePInvokeWrapper(const Il2CppImage* image, const MethodInfo* method)
 {
+    if (hybridclr::metadata::IsInterpreterImage(image))
+    {
+        return hybridclr::metadata::MetadataModule::GetReversePInvokeWrapper(image, method);
+    }
     if (image->codeGenModule->reversePInvokeWrapperCount == 0)
         return NULL;
 
@@ -1008,11 +1012,11 @@ void il2cpp::vm::MetadataCache::RegisterInterpreterAssembly(Il2CppAssembly* asse
     s_cliAssemblies.push_back(assembly);
 }
 
-const Il2CppAssembly* il2cpp::vm::MetadataCache::LoadAssemblyFromBytes(const char* assemblyBytes, size_t length, const char* rawSymbolStoreBytes, size_t rawSymbolStoreLength)
+const Il2CppAssembly* il2cpp::vm::MetadataCache::LoadAssemblyFromBytes(const char* assemblyBytes, size_t length)
 {
-    Il2CppAssembly* newAssembly = hybridclr::metadata::Assembly::LoadFromBytes(assemblyBytes, length, rawSymbolStoreBytes, rawSymbolStoreLength);
     il2cpp::os::FastAutoLock lock(&il2cpp::vm::g_MetadataLock);
 
+    Il2CppAssembly* newAssembly = hybridclr::metadata::Assembly::LoadFromBytes(assemblyBytes, length, true);
     // avoid register placeholder assembly twicely.
     for (Il2CppAssembly* ass : s_cliAssemblies)
     {
@@ -1304,13 +1308,6 @@ Il2CppMetadataEventInfo il2cpp::vm::MetadataCache::GetEventInfo(const Il2CppClas
 {
     return il2cpp::vm::GlobalMetadata::GetEventInfo(klass, index);
 }
-
-#if SUPPORT_METHOD_RETURN_TYPE_CUSTOM_ATTRIBUTE
-uint32_t il2cpp::vm::MetadataCache::GetReturnParameterToken(Il2CppMetadataMethodDefinitionHandle handle)
-{
-    return il2cpp::vm::GlobalMetadata::GetReturnParameterToken(handle);
-}
-#endif
 
 uint32_t il2cpp::vm::MetadataCache::GetGenericContainerCount(Il2CppMetadataGenericContainerHandle handle)
 {

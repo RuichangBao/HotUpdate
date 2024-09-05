@@ -17,28 +17,9 @@ namespace interpreter
 	public:
 		static void Initialize();
 
-		static MachineState& GetCurrentThreadMachineState()
-		{
-			MachineState* state = nullptr;
-			s_machineState.GetValue((void**)&state);
-			if (!state)
-			{
-				state = new MachineState();
-				s_machineState.SetValue(state);
-			}
-			return *state;
-		}
 
-		static void FreeThreadLocalMachineState()
-		{
-			MachineState* state = nullptr;
-			s_machineState.GetValue((void**)&state);
-			if (state)
-			{
-				delete state;
-				s_machineState.SetValue(nullptr);
-			}
-		}
+		static MachineState& GetCurrentThreadMachineState();
+		static void FreeThreadLocalMachineState();
 
 		static InterpMethodInfo* GetInterpMethodInfo(const MethodInfo* methodInfo);
 
@@ -71,14 +52,9 @@ namespace interpreter
 		static void NotSupportNative2Managed();
 		static void NotSupportAdjustorThunk();
 
-		static Il2CppMethodPointer GetReversePInvokeWrapper(const Il2CppImage* image, const MethodInfo* method, Il2CppCallConvention callConvention);
-		static const MethodInfo* GetMethodInfoByReversePInvokeWrapperIndex(int32_t index);
-		static const MethodInfo* GetMethodInfoByReversePInvokeWrapperMethodPointer(Il2CppMethodPointer methodPointer);
-		static int32_t GetWrapperIndexByReversePInvokeWrapperMethodPointer(Il2CppMethodPointer methodPointer);
-
 		static const char* GetValueTypeSignature(const char* fullName);
-		
 	private:
+
 		static il2cpp::os::ThreadLocalValue s_machineState;
 	};
 }

@@ -174,23 +174,8 @@ namespace System
         {
             il2cpp::vm::Exception::Raise(il2cpp::vm::Exception::GetArgumentNullException("rawAssembly is null"));
         }
-        const char* rawSymbolStoreBytes;
-        size_t rawSymbolStoreLength;
-        if (rawSymbolStore)
-        {
-			rawSymbolStoreBytes = (const char*)il2cpp::vm::Array::GetFirstElementAddress(rawSymbolStore);
-			rawSymbolStoreLength = il2cpp::vm::Array::GetByteLength(rawSymbolStore);
-		}
-        else
-        {
-            rawSymbolStoreBytes = nullptr;
-            rawSymbolStoreLength = 0;
-        }
-        const Il2CppAssembly* assembly = il2cpp::vm::MetadataCache::LoadAssemblyFromBytes(
-            il2cpp::vm::Array::GetFirstElementAddress(rawAssembly),
-            il2cpp::vm::Array::GetByteLength(rawAssembly),
-            rawSymbolStoreBytes,
-            rawSymbolStoreLength);
+        const Il2CppAssembly* assembly = il2cpp::vm::MetadataCache::LoadAssemblyFromBytes(il2cpp::vm::Array::GetFirstElementAddress(rawAssembly),
+            il2cpp::vm::Array::GetByteLength(rawAssembly));
         return (Il2CppObject*)vm::Reflection::GetAssemblyObject(assembly);
     }
 

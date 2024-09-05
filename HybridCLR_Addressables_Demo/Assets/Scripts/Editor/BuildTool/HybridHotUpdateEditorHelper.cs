@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Security.Cryptography;
 using System.Text;
 using AOT;
 using HybridCLR.Editor;
@@ -267,28 +266,6 @@ namespace BuildTool
             File.WriteAllText(RUN_TIME_INITIALIZE_ON_LOAD_METHOD_COLLECTION_PATH, json, Encoding.UTF8);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-        }
-        public static void Test()
-        {
-            string path = $"{HotUpdateDestinationPath}GamePlay.dll.bytes";
-            Debug.Log(path);
-            string md5 = GetMD5Hash(path);
-            Debug.Log(md5);
-        }
-
-        public static string GetMD5Hash(string filePath)
-        {
-            if (!File.Exists(filePath))
-                throw new FileNotFoundException("The specified file does not exist.");
-
-            using (var md5 = MD5.Create())
-            {
-                using (var stream = File.OpenRead(filePath))
-                {
-                    byte[] hash = md5.ComputeHash(stream);
-                    return BitConverter.ToString(hash).Replace("-", "").ToUpperInvariant();
-                }
-            }
         }
     }
 }

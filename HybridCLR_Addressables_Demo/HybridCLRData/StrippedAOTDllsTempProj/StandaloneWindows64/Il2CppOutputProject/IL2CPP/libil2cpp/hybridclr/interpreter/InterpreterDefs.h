@@ -8,7 +8,7 @@ namespace hybridclr
 	{
 
 		// from obj or arg
-		enum class LocationDataType : uint8_t
+		enum class LocationDataType
 		{
 			I1,
 			U1,
@@ -61,7 +61,7 @@ namespace hybridclr
 
 		struct InterpFrame
 		{
-			const MethodInfo* method;
+			const InterpMethodInfo* method;
 			StackObject* stackBasePtr;
 			int32_t oldStackTop;
 			void* ret;
@@ -97,27 +97,26 @@ namespace hybridclr
 
 		struct MethodArgDesc
 		{
-			bool passbyValWhenInvoke;
 			LocationDataType type;
-			uint16_t stackObjectSize;
+			uint32_t stackObjectSize;
+			bool passbyValWhenInvoke;
 		};
 
 		struct InterpMethodInfo
 		{
-			byte* codes;
+			const MethodInfo* method;
 			MethodArgDesc* args;
-			uint64_t* resolveDatas;
-			const InterpExceptionClause* exClauses;
+			uint32_t argCount;
 			uint32_t argStackObjectSize;
-			uint32_t retStackObjectSize : 24;
-			uint32_t initLocals : 8;
-			uint32_t localStackSize; // args + locals StackObject size
+			byte* codes;
+			uint32_t codeLength;
 			uint32_t maxStackSize; // args + locals + evalstack size
-			uint32_t argCount : 8;
-			uint32_t codeLength : 24;
 			uint32_t localVarBaseOffset;
 			uint32_t evalStackBaseOffset;
-			uint32_t exClauseCount;
+			uint32_t localStackSize; // args + locals StackObject size
+			std::vector<uint64_t> resolveDatas;
+			std::vector<InterpExceptionClause*> exClauses;
+			bool initLocals;
 		};
 	}
 }

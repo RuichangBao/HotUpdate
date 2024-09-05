@@ -74,7 +74,8 @@ namespace hybridclr
 
 	inline std::string GetKlassCStringFullName(const Il2CppType* type)
 	{
-		return GetKlassFullName2(type);
+		Il2CppString* typeName = GetKlassFullName(type);
+		return il2cpp::utils::StringUtils::Utf16ToUtf8(typeName->chars);
 	}
 
 	inline void RaiseNotSupportedException(const char* msg)

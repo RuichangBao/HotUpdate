@@ -19,7 +19,7 @@ namespace hybridclr
 		case hybridclr::RuntimeOptionId::InterpreterThreadFrameStackSize:
 			return s_threadFrameStackSize;
 		case hybridclr::RuntimeOptionId::InterpreterThreadExceptionFlowSize:
-			return s_threadExceptionFlowSize;
+			return s_threadFrameStackSize;
 		default:
 		{
 			TEMP_FORMAT(optionIdStr, "%d", optionId);

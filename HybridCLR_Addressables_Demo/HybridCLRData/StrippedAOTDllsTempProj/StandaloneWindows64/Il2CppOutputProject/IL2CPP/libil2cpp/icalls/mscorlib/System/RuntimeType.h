@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string>
-
 struct Il2CppReflectionRuntimeType;
 struct mscorlib_System_Reflection_MethodInfo;
 
@@ -72,7 +70,6 @@ namespace System
         static void GetInterfaceMapData(Il2CppReflectionType* type, Il2CppReflectionType* iface, Il2CppArray** targets, Il2CppArray** methods);
         static void GetPacking(Il2CppReflectionType* type, int32_t* packing, int32_t* size);
         static void GetGUID(Il2CppReflectionType* type, Il2CppArray* types);
-        static std::string getFullName2(Il2CppReflectionRuntimeType* thisPtr, bool full_name, bool assembly_qualified);
     };
 } // namespace System
 } // namespace mscorlib

@@ -1,10 +1,6 @@
 #pragma once
 
-#if HYBRIDCLR_UNITY_2023_OR_NEW
-#include "codegen/il2cpp-codegen.h"
-#else
 #include "codegen/il2cpp-codegen-il2cpp.h"
-#endif
 
 #include "InterpreterDefs.h"
 

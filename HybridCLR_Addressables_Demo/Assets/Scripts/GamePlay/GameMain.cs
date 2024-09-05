@@ -7,7 +7,7 @@ namespace GamePlay
     {
         private void Start()
         {
-            Debug.Log("2222222222");
+            Debug.Log("Hello World");
             GameTest.Instance.Test();
         }
     }

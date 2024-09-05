@@ -9,29 +9,11 @@
 #include "metadata/GenericMetadata.h"
 
 #include "Image.h"
-#include "MetadataPool.h"
 
 namespace hybridclr
 {
 namespace metadata
 {
-	const uint32_t kMetadataImageIndexExtraShiftBitsArr[4] = 
-	{
-		kMetadataImageIndexExtraShiftBitsA,
-		kMetadataImageIndexExtraShiftBitsB,
-		kMetadataImageIndexExtraShiftBitsC,
-		kMetadataImageIndexExtraShiftBitsD,
-	};
-
-	const uint32_t kMetadataIndexMaskArr[4] = 
-	{
-		kMetadataIndexMaskA,
-		kMetadataIndexMaskB,
-		kMetadataIndexMaskC,
-		kMetadataIndexMaskD,
-	};
-
-
 	uint32_t GetNotZeroBitCount(uint64_t x)
 	{
 		uint32_t count = 0;
@@ -556,7 +538,7 @@ namespace metadata
 			}
 		}
 
-		const Il2CppType* returnType1 = resolveSig.returnType;
+		const Il2CppType* returnType1 = &resolveSig.returnType;
 		const Il2CppType* returnType2 = il2cpp::vm::GlobalMetadata::GetIl2CppTypeFromIndex(methodDef->returnType);
 		if (!IsMatchSigType(returnType2, returnType1, klassGenericContainer, methodGenericContainer))
 		{
@@ -564,7 +546,7 @@ namespace metadata
 		}
 		for (uint32_t i = 0; i < methodDef->parameterCount; i++)
 		{
-			const Il2CppType* paramType1 = resolveSig.params[i];
+			const Il2CppType* paramType1 = &resolveSig.params[i];
 			const Il2CppParameterDefinition* dstParam = (const Il2CppParameterDefinition*)il2cpp::vm::GlobalMetadata::GetParameterDefinitionFromIndex(methodDef, methodDef->parameterStart + i);
 			IL2CPP_ASSERT(dstParam);
 			const Il2CppType* paramType2 = il2cpp::vm::GlobalMetadata::GetIl2CppTypeFromIndex(dstParam->typeIndex);
@@ -598,7 +580,7 @@ namespace metadata
 				return false;
 			}
 		}
-		const Il2CppType* returnType1 = resolveSig.returnType;
+		const Il2CppType* returnType1 = &resolveSig.returnType;
 		const Il2CppType* returnType2 = methodDef->return_type;
 		if (!IsMatchSigType(returnType2, returnType1, klassGenericContainer, methodGenericContainer))
 		{
@@ -606,7 +588,7 @@ namespace metadata
 		}
 		for (uint32_t i = 0; i < methodDef->parameters_count; i++)
 		{
-			const Il2CppType* paramType1 = resolveSig.params[i];
+			const Il2CppType* paramType1 = &resolveSig.params[i];
 			const Il2CppType* paramType2 = GET_METHOD_PARAMETER_TYPE(methodDef->parameters[i]);
 			if (!IsMatchSigType(paramType2, paramType1, klassGenericContainer, methodGenericContainer))
 			{
@@ -637,7 +619,7 @@ namespace metadata
 				return false;
 			}
 		}
-		const Il2CppType* returnType1 = resolveSig.returnType;
+		const Il2CppType* returnType1 = &resolveSig.returnType;
 		const Il2CppType* returnType2 = methodDef->return_type;
 		if (!IsMatchSigType(returnType2, returnType1, klassInstArgv, methodInstArgv))
 		{
@@ -645,7 +627,7 @@ namespace metadata
 		}
 		for (uint32_t i = 0; i < methodDef->parameters_count; i++)
 		{
-			const Il2CppType* paramType1 = resolveSig.params[i];
+			const Il2CppType* paramType1 = &resolveSig.params[i];
 			const Il2CppType* paramType2 = GET_METHOD_PARAMETER_TYPE(methodDef->parameters[i]);
 			if (!IsMatchSigType(paramType2, paramType1, klassInstArgv, methodInstArgv))
 			{
@@ -700,7 +682,7 @@ namespace metadata
 		return nullptr;
 	}
 
-	bool ResolveField(const Il2CppType* type, const char* resolveFieldName, const Il2CppType* resolveFieldType, const Il2CppFieldDefinition*& retFieldDef)
+	bool ResolveField(const Il2CppType* type, const char* resolveFieldName, Il2CppType* resolveFieldType, const Il2CppFieldDefinition*& retFieldDef)
 	{
 		const Il2CppTypeDefinition* typeDef = GetUnderlyingTypeDefinition(type);
 		const Il2CppGenericContainer* klassGenericContainer = GetGenericContainerFromIl2CppType(type);
@@ -748,16 +730,6 @@ namespace metadata
 			argv[i] = TryInflateIfNeed(inst->type_argv[i], genericContext, true);
 		}
 		return il2cpp::vm::MetadataCache::GetGenericInst(argv, inst->type_argc);
-	}
-
-	const Il2CppType* GetIl2CppTypeFromTypeDefinition(const Il2CppTypeDefinition* typeDef)
-	{
-		Il2CppType type = {};
-		bool isValueType = IsValueType(typeDef);
-		type.type = isValueType ? IL2CPP_TYPE_VALUETYPE : IL2CPP_TYPE_CLASS;
-		type.data.typeHandle = (Il2CppMetadataTypeHandle)typeDef;
-		SET_IL2CPPTYPE_VALUE_TYPE(type, isValueType);
-		return MetadataPool::GetPooledIl2CppType(type);
 	}
 }
 }

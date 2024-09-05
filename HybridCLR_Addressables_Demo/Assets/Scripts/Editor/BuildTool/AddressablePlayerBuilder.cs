@@ -22,8 +22,8 @@ namespace BuildTool
         private static AddressableAssetSettings DefaultSettings => AddressableAssetSettingsDefaultObject.Settings;
         
         private static AddressableAssetGroup ContentUpdateGroup => DefaultSettings.groups.Find(g => g.name.Contains(CONTENT_UPDATE_GROUP_NAME));
-
-        [MenuItem("打包/完整包")]
+        
+        [MenuItem("Build/BuildContentAndPlayer")]
         private static void BuildContentAndPlayerWithHybridCLR()
         {
             HybridHotUpdateEditorHelper.SetEnableHotUpdate(true);
@@ -31,16 +31,11 @@ namespace BuildTool
             BuildContentAndPlayer();
         }
 
-        [MenuItem("打包/热更包")]
+        [MenuItem("Build/UpdatePreviousBuild")]
         private static void UpdatePreviousPlayerWithHybridCLR()
         {
             HybridHotUpdateEditorHelper.BuildHotUpdateDlls(false);
             UpdatePreviousPlayer();
-        }
-        [MenuItem("打包/测试")]
-        private static void BuildAddressable()
-        {
-            HybridHotUpdateEditorHelper.Test();
         }
 
         private static void BuildContentAndPlayer()
