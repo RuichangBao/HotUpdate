@@ -63,7 +63,12 @@ namespace BuildTool
         }
         public static void Test()
         {
-            CopyHotUpdateDll();
+            List<string> assemblys = SettingsUtil.HotUpdateAssemblyNamesExcludePreserved;
+            for (int i = 0; i < assemblys.Count; i++)
+            {
+                Debug.Log(assemblys[i]);
+            }
+            //CopyHotUpdateDll();
         }
         /// <summary>
         /// 设置是否开启热更新
