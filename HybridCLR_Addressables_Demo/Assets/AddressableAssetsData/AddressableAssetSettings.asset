@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 5473932cdf88acc4784c880de9aee665
   m_currentHash:
     serializedVersion: 2
-    Hash: 5edfbadf871a95b020a982daf0293e6b
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 716876498c20bc64d8056094d016ad6c, type: 2}
   - {fileID: 11400000, guid: ad4d7e6a96510c443b8b11df2a272bc7, type: 2}
   - {fileID: 11400000, guid: ecd41f4ea64cb2247ab9f5e62251a173, type: 2}
+  - {fileID: 11400000, guid: 0d8f95235cb7dec40b6c6849df054384, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -70,7 +71,7 @@ MonoBehaviour:
       - m_Id: eb46dfd26026b60418889b30d9b7d92a
         m_Value: D:\HttpServer\HybridCLR_Addressables_Demo\[BuildTarget]
       - m_Id: d388ccacf8397ea4bab922b24131c94b
-        m_Value: http://192.168.3.106:8081\HybridCLR_Addressables_Demo\[BuildTarget]
+        m_Value: http://192.168.3.93:8080/HybridCLR_Addressables_Demo/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 5df9c38d23aed2e4bb0c3d13c7a078f8
       m_Name: BuildTarget
@@ -125,7 +126,7 @@ MonoBehaviour:
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean
-          m_Data: True
+          m_Data: False
           m_Key: IsEnabled
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String

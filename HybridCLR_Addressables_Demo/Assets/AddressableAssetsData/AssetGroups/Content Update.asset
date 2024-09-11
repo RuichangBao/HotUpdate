@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Content Update
+  m_EditorClassIdentifier: 
+  m_GroupName: Content Update
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a06f54d91776fd742973531873c18d9e
+  m_SerializeEntries:
+  - m_GUID: 5f3497b173d101c4eb08a0f4b065979c
+    m_Address: Assets/HotUpdateDlls/HotUpdateDll/GamePlay.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ed9a46ab074cb0439e863e24cd02651
+    m_Address: Assets/HotUpdateDlls/MetaDataDll/System.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4475a6b2c274acb429e0023c69f69341
+    m_Address: Assets/HotUpdateDlls/MetaDataDll/Unity.Addressables.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8027665230baac1429db698f1ec51b2f
+    m_Address: Assets/HotUpdateDlls/MetaDataDll/Unity.ResourceManager.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7a9d7419692a764288c09c3f3ae1158
+    m_Address: Assets/HotUpdateDlls/MetaDataDll/UnityEngine.CoreModule.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0c1f7c3dfdb2ba4393f0f3c81c983f7
+    m_Address: Assets/HotUpdateDlls/MetaDataDll/mscorlib.dll.bytes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b83412aa313fe943bfa77d72827e0bd
+    m_Address: Assets/Scenes/GameScenes/StartScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bd8c88330daf27744b9edd695f056cc7, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e1e59f24254a0f743916f6186375ff5f, type: 2}
+    - {fileID: 11400000, guid: 6162c97d42c83bb4098a00c27e168583, type: 2}

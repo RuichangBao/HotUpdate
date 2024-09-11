@@ -117,7 +117,7 @@ namespace GamePlay
         
         public void Test()
         {
-            TestGenericType();
+            //TestGenericType();
             TestPrefab();
             TestScriptableObject();
         }
